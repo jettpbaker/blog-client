@@ -13,21 +13,50 @@ function SignUpForm({ handleSubmit }) {
   const onSubmit = (e) => {
     e.preventDefault()
     handleSubmit(firstName, lastName, email, password)
+    clearValues()
+  }
+
+  const clearValues = () => {
+    setFirstName('')
+    setLastName('')
+    setEmail('')
+    setPassword('')
   }
 
   return (
     <form action="" onSubmit={onSubmit}>
       <label htmlFor="firstName">First name</label>
-      <input type="text" name="firstName" value={firstName} onChange={(e) => handleChange(e, setFirstName)} />
+      <input
+        type="text"
+        id="firstName"
+        name="firstName"
+        value={firstName}
+        onChange={(e) => handleChange(e, setFirstName)}
+        required
+      />
 
       <label htmlFor="lastName">Last name</label>
-      <input type="text" name="lastName" value={lastName} onChange={(e) => handleChange(e, setLastName)} />
+      <input
+        type="text"
+        id="lastName"
+        name="lastName"
+        value={lastName}
+        onChange={(e) => handleChange(e, setLastName)}
+        required
+      />
 
       <label htmlFor="email">Email</label>
-      <input type="email" name="email" value={email} onChange={(e) => handleChange(e, setEmail)} />
+      <input type="email" id="email" name="email" value={email} onChange={(e) => handleChange(e, setEmail)} required />
 
       <label htmlFor="password">Password</label>
-      <input type="password" name="password" value={password} onChange={(e) => handleChange(e, setPassword)} />
+      <input
+        type="password"
+        id="password"
+        name="password"
+        value={password}
+        onChange={(e) => handleChange(e, setPassword)}
+        required
+      />
 
       <button type="submit">Submit</button>
     </form>
