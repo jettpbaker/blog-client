@@ -1,10 +1,23 @@
 import { useNavigate } from 'react-router'
 import LoginForm from './LoginForm'
 import { useAuth } from '../../context/AuthContext'
+import Toast from '../../components/Toast/Toast'
+import { useState } from 'react'
 
 function Login() {
+  const [toastMessage, setToastMessage] = useState(null)
+  const [toastType, setToastType] = useState('error')
   const navigate = useNavigate()
   const { login } = useAuth()
+
+  const showToast = (message, type) => {
+    setToastMessage(message)
+    setToastType(type)
+  }
+
+  const hideToast = () => {
+    setToastMessage(null)
+  }
 
   const handleSubmit = async (email, password) => {
     try {
@@ -25,6 +38,7 @@ function Login() {
       login(data.token)
       navigate('/')
     } catch (err) {
+      showToast(err.message, 'warning')
       console.error('Login error:', err.message)
     }
   }
@@ -32,6 +46,7 @@ function Login() {
   return (
     <main>
       <LoginForm handleSubmit={handleSubmit} />
+      {toastMessage && <Toast message={toastMessage} type={toastType} onClose={hideToast} />}
     </main>
   )
 }
