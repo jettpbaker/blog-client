@@ -1,18 +1,40 @@
 import { Outlet } from 'react-router'
+import styles from './Layout.module.css'
+import { Link } from 'react-router'
+import Logo from './Logo'
+import isLoggedIn from '../../utils/auth'
 
-const Layout = () => {
+function Nav() {
+  const auth = isLoggedIn()
+  console.log(auth)
+
+  return (
+    <nav>
+      <ul>
+        {auth ? (
+          <>
+            <li>Logout</li>
+            <li>New post</li>
+          </>
+        ) : (
+          <>
+            <li>Login</li>
+            <li>Sign Up</li>
+          </>
+        )}
+      </ul>
+    </nav>
+  )
+}
+
+function Layout() {
   return (
     <>
       <header>
-        <h1>Blogging Counter</h1>
-        <nav>
-          <ul>
-            <li>Login</li>
-            <li>Sign Up</li>
-            <li>Logout</li>
-            <li>New post</li>
-          </ul>
-        </nav>
+        <Link to="/" className={styles['logo-container']}>
+          <Logo />
+        </Link>
+        <Nav />
         <div>☀️</div>
       </header>
       <main>

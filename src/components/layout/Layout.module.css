@@ -1,0 +1,33 @@
+.logo-container {
+  text-decoration: none;
+  color: var(--color-primary-text);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+
+  width: fit-content;
+}
+
+.crosshair {
+  color: var(--color-primary-accent);
+  transform: translateY(0.1rem);
+}
+
+.logo-text {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xl);
+
+  letter-spacing: -0.04rem;
+}
+
+.logo-counter {
+  color: var(--color-primary-accent);
+}
+
+ul {
+  list-style-type: none;
+}
