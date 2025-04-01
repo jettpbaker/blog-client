@@ -70,6 +70,12 @@ button {
   font-size: 01rem;
 
   cursor: pointer;
+
+  transition: background-color 0.25s ease;
+}
+
+button:hover {
+  background-color: rgb(235, 235, 235);
 }
 
 hr {

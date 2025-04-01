@@ -2,16 +2,15 @@ import { Outlet } from 'react-router'
 import styles from './Layout.module.css'
 import { Link } from 'react-router'
 import Logo from './Logo'
-import isLoggedIn from '../../utils/auth'
+import { useAuth } from '../../context/AuthContext'
 
 function Nav() {
-  const auth = isLoggedIn()
-  console.log(auth)
+  const { isAuthenticated } = useAuth()
 
   return (
     <nav>
       <ul>
-        {auth ? (
+        {isAuthenticated ? (
           <>
             <Link to="logout">
               <li>Logout</li>
