@@ -43,7 +43,7 @@ function LoginForm({ handleSubmit }) {
         <div className={styles.formField}>
           <label htmlFor="password">Password</label>
           <input
-            type="text"
+            type="password"
             name="password"
             placeholder="••••••••"
             value={password}
