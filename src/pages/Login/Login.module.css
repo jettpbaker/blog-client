@@ -1,0 +1,94 @@
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+}
+
+section {
+  background-color: var(--color-secondary-bg);
+  border: 1px solid var(--color-secondary-border);
+  border-radius: 0.15rem;
+
+  padding: 2rem;
+  width: 22rem;
+
+  margin: 0rem 0.75rem;
+}
+
+.heading h2 {
+  margin: 0;
+}
+
+.heading p {
+  margin-top: 0.25rem;
+  color: var(--color-secondary-text-muted);
+}
+
+form {
+  margin: 2rem 0rem;
+}
+
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.formField label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+
+  margin-left: 0.1rem;
+
+  font-family: var(--font-family-primary);
+}
+
+.formField input {
+  color: var(--color-secondary-text-muted);
+  background-color: var(--color-primary-background);
+  border: 1px solid var(--color-secondary-border);
+  border-radius: 0.15rem;
+
+  padding: 0.6rem;
+
+  font-family: var(--font-family-primary);
+}
+
+button {
+  border: none;
+  border-radius: 0.15rem;
+  background-color: var(--color-primary-text);
+
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0.6rem;
+
+  font-family: var(--font-family-primary);
+  font-size: 01rem;
+
+  cursor: pointer;
+}
+
+hr {
+  margin: 0;
+  color: var(--color-secondary-border);
+}
+
+.signUp {
+  text-align: center;
+  color: var(--color-secondary-text-muted);
+
+  margin: 2rem 0rem 0rem 0rem;
+}
+
+.signUp a {
+  display: inline;
+  transition: color 0.25s ease;
+}
+
+.signUp a:hover {
+  color: var(--color-primary-accent);
+}
