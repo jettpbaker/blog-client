@@ -29,7 +29,11 @@ function Login() {
     }
   }
 
-  return <LoginForm handleSubmit={handleSubmit} />
+  return (
+    <main>
+      <LoginForm handleSubmit={handleSubmit} />
+    </main>
+  )
 }
 
 export default Login

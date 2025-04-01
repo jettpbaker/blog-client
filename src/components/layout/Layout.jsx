@@ -5,28 +5,31 @@ import Logo from './Logo'
 import { useAuth } from '../../context/AuthContext'
 
 function Nav() {
-  const { isAuthenticated } = useAuth()
+  const { isAuthenticated, logout } = useAuth()
 
   return (
     <nav>
       <ul>
         {isAuthenticated ? (
           <>
-            <Link to="logout">
-              <li>Logout</li>
-            </Link>
-            <Link to="new-post">
-              <li className="link-accent">New post</li>
-            </Link>
+            <li>
+              <button className={styles['logout-button']} onClick={logout}>
+                Logout
+              </button>
+            </li>
+
+            <li className={styles['link-accent']}>
+              <Link to="new-post">New Post</Link>
+            </li>
           </>
         ) : (
           <>
-            <Link to="login">
-              <li>Login</li>
-            </Link>
-            <Link to="sign-up">
-              <li>Sign Up</li>
-            </Link>
+            <li>
+              <Link to="login">Login</Link>
+            </li>
+            <li>
+              <Link to="sign-up">Sign Up</Link>
+            </li>
           </>
         )}
       </ul>
@@ -43,9 +46,7 @@ function Layout() {
         </Link>
         <Nav />
       </header>
-      <main>
-        <Outlet />
-      </main>
+      <Outlet />
     </>
   )
 }
