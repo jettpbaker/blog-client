@@ -1,6 +1,9 @@
 import SignUpForm from './SignUpForm'
+import { useAuth } from '../../context/AuthContext'
 
 function SignUp() {
+  const { login } = useAuth()
+
   const handleSubmit = async (firstName, lastName, email, password) => {
     const response = await fetch('http://localhost:3000/auth/signup', {
       method: 'POST',
@@ -16,7 +19,7 @@ function SignUp() {
     }
 
     const data = await response.json()
-    localStorage.setItem('jwt', data.token)
+    login(data.token)
   }
 
   return <SignUpForm handleSubmit={handleSubmit} />
