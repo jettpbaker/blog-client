@@ -13,13 +13,21 @@ function Nav() {
       <ul>
         {auth ? (
           <>
-            <li>Logout</li>
-            <li>New post</li>
+            <Link to="logout">
+              <li>Logout</li>
+            </Link>
+            <Link to="new-post">
+              <li className="link-accent">New post</li>
+            </Link>
           </>
         ) : (
           <>
-            <li>Login</li>
-            <li>Sign Up</li>
+            <Link to="login">
+              <li>Login</li>
+            </Link>
+            <Link to="sign-up">
+              <li>Sign Up</li>
+            </Link>
           </>
         )}
       </ul>
@@ -35,7 +43,6 @@ function Layout() {
           <Logo />
         </Link>
         <Nav />
-        <div>☀️</div>
       </header>
       <main>
         <Outlet />
