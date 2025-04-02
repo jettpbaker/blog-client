@@ -6,13 +6,12 @@ import { useState } from 'react'
 
 function Login() {
   const [toastMessage, setToastMessage] = useState(null)
-  const [toastType, setToastType] = useState('error')
+  const [toastType, setToastType] = useState(null)
   const navigate = useNavigate()
   const { login } = useAuth()
 
-  const showToast = (message, type) => {
+  const showToast = (message) => {
     setToastMessage(message)
-    setToastType(type)
   }
 
   const hideToast = () => {
@@ -31,14 +30,23 @@ function Login() {
 
       if (!response.ok) {
         const errorData = await response.json()
-        throw new Error(errorData.message || `Signup failed with status: ${response.status}`)
+
+        if (response.status === 401) {
+          setToastType('warning')
+          showToast(errorData.message || 'Invalid email or password')
+        } else {
+          setToastType('error')
+          showToast(errorData.message || `Request failed with status ${response.status}`)
+        }
+        return
       }
 
       const data = await response.json()
       login(data.token)
       navigate('/')
     } catch (err) {
-      showToast(err.message, 'warning')
+      setToastType('error')
+      showToast('Unable to connect to the server. Please try again later.')
       console.error('Login error:', err.message)
     }
   }
