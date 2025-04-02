@@ -22,7 +22,11 @@ function SignUp() {
     login(data.token)
   }
 
-  return <SignUpForm handleSubmit={handleSubmit} />
+  return (
+    <main className="form-main">
+      <SignUpForm handleSubmit={handleSubmit} />
+    </main>
+  )
 }
 
 export default SignUp

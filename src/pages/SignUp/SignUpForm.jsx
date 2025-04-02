@@ -1,6 +1,7 @@
 import { useState } from 'react'
+import { Link } from 'react-router'
 
-function SignUpForm({ handleSubmit }) {
+function SignUpForm({ handleSubmit, loading = false }) {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
@@ -24,42 +25,67 @@ function SignUpForm({ handleSubmit }) {
   }
 
   return (
-    <form action="" onSubmit={onSubmit}>
-      <label htmlFor="firstName">First name</label>
-      <input
-        type="text"
-        id="firstName"
-        name="firstName"
-        value={firstName}
-        onChange={(e) => handleChange(e, setFirstName)}
-        required
-      />
+    <section className="form-section">
+      <div className="form-heading">
+        <h2>Sign Up</h2>
+        <p>Enter your credentials to create your account</p>
+      </div>
+      <form onSubmit={(e) => onSubmit(e)}>
+        <div className="form-field">
+          <label htmlFor="firstName">First name</label>
+          <input
+            type="firstName"
+            name="firstName"
+            placeholder="Your first name"
+            value={firstName}
+            onChange={(e) => handleChange(e, setFirstName)}
+            required
+          />
+        </div>
 
-      <label htmlFor="lastName">Last name</label>
-      <input
-        type="text"
-        id="lastName"
-        name="lastName"
-        value={lastName}
-        onChange={(e) => handleChange(e, setLastName)}
-        required
-      />
+        <div className="form-field">
+          <label htmlFor="lastName">Last name</label>
+          <input
+            type="lastName"
+            name="lastName"
+            placeholder="Your last name"
+            value={lastName}
+            onChange={(e) => handleChange(e, setLastName)}
+            required
+          />
+        </div>
 
-      <label htmlFor="email">Email</label>
-      <input type="email" id="email" name="email" value={email} onChange={(e) => handleChange(e, setEmail)} required />
+        <div className="form-field">
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            placeholder="you@example.com"
+            value={email}
+            onChange={(e) => handleChange(e, setEmail)}
+            required
+          />
+        </div>
 
-      <label htmlFor="password">Password</label>
-      <input
-        type="password"
-        id="password"
-        name="password"
-        value={password}
-        onChange={(e) => handleChange(e, setPassword)}
-        required
-      />
+        <div className="form-field">
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            placeholder="••••••••"
+            value={password}
+            onChange={(e) => handleChange(e, setPassword)}
+            required
+          />
+        </div>
 
-      <button type="submit">Submit</button>
-    </form>
+        <button type="submit">{!loading ? 'Sign up' : <LoaderCircle className="form-loading" />}</button>
+      </form>
+      <hr />
+      <p className="form-alternate-option">
+        Already have an account? <Link to="/login">Login</Link>
+      </p>
+    </section>
   )
 }
 
