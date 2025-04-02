@@ -35,6 +35,12 @@ a {
   font-size: var(--font-size-xl);
 
   letter-spacing: -0.04rem;
+
+  color: var(--color-primary-text);
+}
+
+.logo-text:hover {
+  color: var(--color-primary-text);
 }
 
 @media (max-width: 500px) {
