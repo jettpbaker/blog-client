@@ -1,4 +1,3 @@
-import styles from './Login.module.css'
 import { Link } from 'react-router'
 import { useState } from 'react'
 import { LoaderCircle } from 'lucide-react'
@@ -23,13 +22,13 @@ function LoginForm({ handleSubmit, loading }) {
   }
 
   return (
-    <section>
-      <div className={styles.heading}>
+    <section className="form-section">
+      <div className="form-heading">
         <h2>Login</h2>
         <p>Enter your credentials to access your account</p>
       </div>
       <form onSubmit={(e) => onSubmit(e)}>
-        <div className={styles.formField}>
+        <div className="form-field">
           <label htmlFor="email">Email</label>
           <input
             type="email"
@@ -41,7 +40,7 @@ function LoginForm({ handleSubmit, loading }) {
           />
         </div>
 
-        <div className={styles.formField}>
+        <div className="form-field">
           <label htmlFor="password">Password</label>
           <input
             type="password"
@@ -56,7 +55,7 @@ function LoginForm({ handleSubmit, loading }) {
         <button type="submit">{!loading ? 'Sign in' : <LoaderCircle className={styles.loading} />}</button>
       </form>
       <hr />
-      <p className={styles.signUp}>
+      <p className="form-alternate-option">
         Don't have an account? <Link to="/sign-up">Sign up</Link>
       </p>
     </section>

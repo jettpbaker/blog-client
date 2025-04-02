@@ -56,7 +56,7 @@ function Login() {
   }
 
   return (
-    <main>
+    <main className="form-main">
       <LoginForm handleSubmit={handleSubmit} loading={loading} />
       {toastMessage && <Toast message={toastMessage} type={toastType} onClose={hideToast} />}
     </main>
