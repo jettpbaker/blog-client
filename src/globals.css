@@ -6,8 +6,8 @@
   --color-primary-accent: #ff3333;
 
   /* Secondary Colors */
-  --color-secondary-bg: #181818;
-  --color-secondary-border: #303030;
+  --color-secondary-bg: #151515;
+  --color-secondary-border: #252525;
   --color-secondary-text-muted: rgba(255, 255, 255, 0.8);
 
   --font-family-primary: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,

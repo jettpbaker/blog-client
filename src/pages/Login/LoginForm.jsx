@@ -1,8 +1,9 @@
 import styles from './Login.module.css'
 import { Link } from 'react-router'
 import { useState } from 'react'
+import { LoaderCircle } from 'lucide-react'
 
-function LoginForm({ handleSubmit }) {
+function LoginForm({ handleSubmit, loading }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -52,7 +53,7 @@ function LoginForm({ handleSubmit }) {
           />
         </div>
 
-        <button type="submit">Sign in</button>
+        <button type="submit">{!loading ? 'Sign in' : <LoaderCircle className={styles.loading} />}</button>
       </form>
       <hr />
       <p className={styles.signUp}>

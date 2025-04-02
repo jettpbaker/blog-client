@@ -65,17 +65,33 @@ button {
   margin-top: 1rem;
   width: 100%;
   padding: 0.6rem;
+  font-size: 1rem;
 
   font-family: var(--font-family-primary);
-  font-size: 01rem;
 
   cursor: pointer;
-
   transition: background-color 0.25s ease;
 }
 
 button:hover {
   background-color: rgb(235, 235, 235);
+}
+
+.loading {
+  height: 1rem;
+  width: auto;
+  stroke-width: 3;
+  translate: 0 0.2rem;
+  animation: spin 1.1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
 }
 
 hr {

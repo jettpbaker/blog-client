@@ -7,6 +7,7 @@ import { useState } from 'react'
 function Login() {
   const [toastMessage, setToastMessage] = useState(null)
   const [toastType, setToastType] = useState(null)
+  const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
   const { login } = useAuth()
 
@@ -19,6 +20,7 @@ function Login() {
   }
 
   const handleSubmit = async (email, password) => {
+    setLoading(true)
     try {
       const response = await fetch('http://localhost:3000/auth/login', {
         method: 'POST',
@@ -48,12 +50,14 @@ function Login() {
       setToastType('error')
       showToast('Unable to connect to the server. Please try again later.')
       console.error('Login error:', err.message)
+    } finally {
+      setLoading(false)
     }
   }
 
   return (
     <main>
-      <LoginForm handleSubmit={handleSubmit} />
+      <LoginForm handleSubmit={handleSubmit} loading={loading} />
       {toastMessage && <Toast message={toastMessage} type={toastType} onClose={hideToast} />}
     </main>
   )
