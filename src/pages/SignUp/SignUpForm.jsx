@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { Link } from 'react-router'
+import { LoaderCircle } from 'lucide-react'
 
-function SignUpForm({ handleSubmit, loading = false }) {
+function SignUpForm({ handleSubmit, loading }) {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')

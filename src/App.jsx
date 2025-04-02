@@ -2,7 +2,7 @@ import { Link } from 'react-router'
 import { useMemo } from 'react'
 import useFetch from './hooks/useFetch'
 
-const App = () => {
+function App() {
   const url = 'http://localhost:3000/api/posts'
   const options = useMemo(
     () => ({
@@ -23,8 +23,6 @@ const App = () => {
   if (error) {
     return <div>Error: {error}</div>
   }
-
-  console.log(data)
 
   return (
     <div>
