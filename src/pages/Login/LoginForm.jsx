@@ -52,7 +52,7 @@ function LoginForm({ handleSubmit, loading }) {
           />
         </div>
 
-        <button type="submit">{!loading ? 'Sign in' : <LoaderCircle className={styles.loading} />}</button>
+        <button type="submit">{!loading ? 'Sign in' : <LoaderCircle className="form-loading" />}</button>
       </form>
       <hr />
       <p className="form-alternate-option">
