@@ -27,7 +27,7 @@ function Nav() {
             <li>
               <Link to="login">Login</Link>
             </li>
-            <li>
+            <li className={styles['last-nav-link']}>
               <Link to="sign-up">Sign Up</Link>
             </li>
           </>

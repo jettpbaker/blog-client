@@ -1,58 +1,52 @@
 import { useNavigate } from 'react-router'
-import LoginForm from './LoginForm'
 import { useAuth } from '../../context/AuthContext'
+import { useState, useEffect } from 'react'
+import LoginForm from './LoginForm'
 import Toast from '../../components/Toast/Toast'
-import { useState } from 'react'
+import useFetch from '../../hooks/useFetch'
 
 function Login() {
   const [toastMessage, setToastMessage] = useState(null)
   const [toastType, setToastType] = useState(null)
-  const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
   const { login } = useAuth()
 
-  const showToast = (message) => {
+  const { data, loading, error, executeFetch } = useFetch()
+
+  const showToast = (message, type = 'error') => {
     setToastMessage(message)
+    setToastType(type)
   }
 
   const hideToast = () => {
     setToastMessage(null)
   }
 
-  const handleSubmit = async (email, password) => {
-    setLoading(true)
-    try {
-      const response = await fetch('http://localhost:3000/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      })
+  useEffect(() => {
+    if (error) {
+      console.log(error)
+      showToast(error, 'error')
+    }
+  }, [error])
 
-      if (!response.ok) {
-        const errorData = await response.json()
-
-        if (response.status === 401) {
-          setToastType('warning')
-          showToast(errorData.message || 'Invalid email or password')
-        } else {
-          setToastType('error')
-          showToast(errorData.message || `Request failed with status ${response.status}`)
-        }
-        return
-      }
-
-      const data = await response.json()
+  useEffect(() => {
+    if (data && data.token) {
       login(data.token)
       navigate('/')
-    } catch (err) {
-      setToastType('error')
-      showToast('Unable to connect to the server. Please try again later.')
-      console.error('Login error:', err.message)
-    } finally {
-      setLoading(false)
     }
+  }, [data, login, navigate])
+
+  const handleSubmit = async (email, password) => {
+    const url = 'http://localhost:3000/auth/login'
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
+    }
+
+    executeFetch(url, options)
   }
 
   return (
