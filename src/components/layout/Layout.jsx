@@ -2,7 +2,7 @@ import { Outlet } from 'react-router'
 import styles from './Layout.module.css'
 import { Link } from 'react-router'
 import Logo from './Logo'
-import { useAuth } from '../../context/AuthContext'
+import { useAuth } from '../../hooks/useAuth'
 
 function Nav() {
   const { isAuthenticated, logout } = useAuth()

@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router'
-import { useAuth } from '../../context/AuthContext'
+import { useAuth } from '../../hooks/useAuth'
 import { useState, useEffect } from 'react'
 import LoginForm from './LoginForm'
 import Toast from '../../components/Toast/Toast'

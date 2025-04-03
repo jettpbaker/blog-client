@@ -1,5 +1,5 @@
 import SignUpForm from './SignUpForm'
-import { useAuth } from '../../context/AuthContext'
+import { useAuth } from '../../hooks/useAuth'
 import useFetch from '../../hooks/useFetch'
 import { useNavigate } from 'react-router'
 import { useEffect } from 'react'
