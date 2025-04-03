@@ -1,0 +1,32 @@
+.devBanner {
+  position: fixed;
+  bottom: -4.5rem;
+  right: -4rem;
+
+  background-color: var(--color-primary-accent);
+
+  padding: 1rem 5rem 5rem 1rem;
+  border-radius: 2rem;
+}
+
+.devBannerContent {
+  display: flex;
+  gap: 0.25rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.devBannerContent {
+  transform: translate(0.2rem, -0.2rem);
+}
+
+.devBannerIcon {
+  stroke-width: 11%;
+  transform: translateY(0.1rem);
+}
+
+.devBannerText {
+  font-family: monospace;
+  font-weight: 500;
+  font-size: 1.25rem;
+}
