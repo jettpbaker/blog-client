@@ -1,9 +1,10 @@
 import { Link } from 'react-router'
 import { useMemo } from 'react'
 import useFetch from './hooks/useFetch'
+const API_URL = import.meta.env.VITE_API_URL
 
 function App() {
-  const url = 'http://localhost:3000/api/posts'
+  const url = `${API_URL}/posts`
   const options = useMemo(
     () => ({
       method: 'GET',
@@ -14,7 +15,7 @@ function App() {
     []
   )
 
-  const { data, loading, error } = useFetch(url, options)
+  const { loading, error } = useFetch(url, options)
 
   if (loading) {
     return <div>Loading...</div>
