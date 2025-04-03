@@ -4,13 +4,16 @@ import './globals.css'
 import './forms.css'
 import { BrowserRouter } from 'react-router'
 import AppRoutes from './routes/router'
-import { AuthProvider } from './context/AuthContext'
+import { AuthProvider } from './context/AuthProvider'
+import { ToastProvider } from './context/ToastProvider'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <AppRoutes />
+        <ToastProvider>
+          <AppRoutes />
+        </ToastProvider>
       </AuthProvider>
     </BrowserRouter>
   </StrictMode>

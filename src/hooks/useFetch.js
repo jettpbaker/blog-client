@@ -13,22 +13,20 @@ const useFetch = (initialUrl = null, initialOptions = {}) => {
       const fetchOptions = overrideOptions || options
 
       if (!fetchUrl) return null
+      setLoading(true)
+      setError(null)
 
       try {
-        setLoading(true)
-        setError(null)
-
         const response = await fetch(fetchUrl, fetchOptions)
-        if (!response.ok) {
-          throw new Error(`Error: ${response.status} ${response.statusText}`)
-        }
         const responseData = await response.json()
+
+        if (!response.ok) {
+          setError(responseData.message)
+        }
         setData(responseData)
         return responseData
       } catch (err) {
-        setError(err.message || 'An error occurred')
         console.error(err)
-
         return null
       } finally {
         setLoading(false)
