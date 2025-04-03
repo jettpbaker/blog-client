@@ -14,7 +14,7 @@ function Login() {
 
   useEffect(() => {
     if (error) {
-      console.log(error)
+      console.error(error)
       showToast('error', error)
     }
   }, [error, showToast])

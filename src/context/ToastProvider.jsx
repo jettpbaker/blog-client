@@ -6,20 +6,30 @@ export const ToastProvider = ({ children }) => {
   const [message, setMessage] = useState(null)
   const [type, setType] = useState('error')
 
-  const showToast = useCallback((type = 'error', message = '') => {
-    const validTypes = ['success', 'warning', 'error']
-    if (!validTypes.includes(type)) {
-      console.error(`Invalid toast type: ${type}`)
-      setType('error')
-      return
-    }
-    setType(type)
-    setMessage(message)
-  }, [])
-
   const closeToast = useCallback(() => {
     setMessage(null)
   }, [])
+
+  const showToast = useCallback(
+    (type = 'error', message = '') => {
+      const validTypes = ['success', 'warning', 'error']
+      if (!validTypes.includes(type)) {
+        console.error(`Invalid toast type: ${type}`)
+        setType('error')
+        setMessage(message)
+        return
+      }
+      setType(type)
+      setMessage(message)
+
+      const timer = setTimeout(() => {
+        closeToast()
+      }, 5000)
+
+      return () => clearTimeout(timer)
+    },
+    [closeToast]
+  )
 
   const RenderToast = useCallback(() => {
     if (message) return <Toast message={message} type={type} onClose={closeToast} />
