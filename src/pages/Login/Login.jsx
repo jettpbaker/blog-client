@@ -1,33 +1,23 @@
 import { useNavigate } from 'react-router'
 import { useAuth } from '../../hooks/useAuth'
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import LoginForm from './LoginForm'
-import Toast from '../../components/Toast/Toast'
+import useToast from '../../hooks/useToast'
 import useFetch from '../../hooks/useFetch'
 
 function Login() {
-  const [toastMessage, setToastMessage] = useState(null)
-  const [toastType, setToastType] = useState(null)
   const navigate = useNavigate()
   const { login } = useAuth()
 
   const { data, loading, error, executeFetch } = useFetch()
-
-  const showToast = (message, type = 'error') => {
-    setToastMessage(message)
-    setToastType(type)
-  }
-
-  const hideToast = () => {
-    setToastMessage(null)
-  }
+  const { showToast, RenderToast } = useToast()
 
   useEffect(() => {
     if (error) {
       console.log(error)
-      showToast(error, 'error')
+      showToast('error', error)
     }
-  }, [error])
+  }, [error, showToast])
 
   useEffect(() => {
     if (data && data.token) {
@@ -52,7 +42,7 @@ function Login() {
   return (
     <main className="form-main">
       <LoginForm handleSubmit={handleSubmit} loading={loading} />
-      {toastMessage && <Toast message={toastMessage} type={toastType} onClose={hideToast} />}
+      <RenderToast />
     </main>
   )
 }

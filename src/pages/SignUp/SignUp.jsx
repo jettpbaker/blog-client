@@ -3,18 +3,20 @@ import { useAuth } from '../../hooks/useAuth'
 import useFetch from '../../hooks/useFetch'
 import { useNavigate } from 'react-router'
 import { useEffect } from 'react'
+import useToast from '../../hooks/useToast'
 
 function SignUp() {
   const { login } = useAuth()
   const { data, loading, error, executeFetch } = useFetch()
+  const { showToast, RenderToast } = useToast()
   const navigate = useNavigate()
 
   useEffect(() => {
     if (error) {
-      console.log(error)
-      // showToast(error, 'error')
+      console.error(error)
+      showToast('error', error)
     }
-  }, [error])
+  }, [error, showToast])
 
   useEffect(() => {
     if (data && data.token) {
@@ -39,6 +41,7 @@ function SignUp() {
   return (
     <main className="form-main">
       <SignUpForm handleSubmit={handleSubmit} loading={loading} />
+      <RenderToast />
     </main>
   )
 }
