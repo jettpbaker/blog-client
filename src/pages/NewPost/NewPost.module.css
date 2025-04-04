@@ -29,7 +29,7 @@
   height: 100%;
   display: flex;
   overflow: hidden;
-  gap: 1rem;
+  gap: 2rem;
 
   margin-bottom: 1rem;
 }
@@ -41,7 +41,7 @@
 }
 
 .buttonContainer {
-  width: calc(50% - 0.5rem);
+  width: calc(50% - 1rem);
   margin-left: auto;
   /* margin-bottom: 1rem; */
 }

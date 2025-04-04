@@ -66,7 +66,7 @@ a {
   color: var(--color-primary-accent);
 }
 
-ul {
+.navBarList {
   display: flex;
   align-items: center;
   gap: 1.5rem;
@@ -76,7 +76,7 @@ ul {
   list-style-type: none;
 }
 
-li {
+.navBarList li {
   padding: 0.6rem 0.3rem;
 }
 

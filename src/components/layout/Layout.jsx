@@ -9,7 +9,7 @@ function Nav() {
 
   return (
     <nav>
-      <ul>
+      <ul className={styles.navBarList}>
         {isAuthenticated ? (
           <>
             <li>
