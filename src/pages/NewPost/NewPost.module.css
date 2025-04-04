@@ -1,0 +1,43 @@
+.newPostContainer {
+  height: calc(100% - 1rem);
+  /* max-height: fit-content; */
+
+  margin: 1rem 2.5rem 1rem 2.5rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.newPostContainer h1 {
+  margin: 0;
+  font-size: var(--font-size-xl);
+}
+
+.newPostContainer h1 a {
+  display: inline;
+  margin: 0;
+
+  text-decoration: underline;
+}
+
+.newPostContainer p {
+  color: var(--color-secondary-text-muted);
+  margin-bottom: 1rem;
+}
+
+.postItemsContainer {
+  height: 100%;
+  display: flex;
+  gap: 1rem;
+}
+
+.newPostContainer section {
+  width: 50%;
+
+  /* border: 1px solid var(--color-secondary-border); */
+}
+
+.newPostContainer button {
+  width: calc(50% - 0.5rem);
+  margin-left: auto;
+}
