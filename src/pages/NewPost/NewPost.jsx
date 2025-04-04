@@ -20,7 +20,11 @@ function NewPost() {
         <PostEditor postMarkdown={postMarkdown} handlePostMarkdown={handlePostMarkdown} />
         <PostPreview postMarkdown={postMarkdown} />
       </div>
-      <button>Publish post</button>
+      <div className={styles.buttonContainer}>
+        <div className={styles.buttonBackground}>
+          <button>Publish post</button>
+        </div>
+      </div>
     </main>
   )
 }

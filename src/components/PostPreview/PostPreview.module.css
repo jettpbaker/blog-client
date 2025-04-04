@@ -1,5 +1,9 @@
 .postPreview {
-  background-color: blue;
+  border: 1px solid var(--color-secondary-border);
+  border-radius: 0.15rem;
+  padding: 0.5rem;
+
+  min-height: max-content;
 }
 
 .postPreview img {
