@@ -4,9 +4,38 @@
   padding: 0.5rem;
 
   min-height: max-content;
+
 }
 
 .postPreview img {
   max-width: 100%;
   height: auto;
+}
+
+.postPreview h1,
+.postPreview h2,
+.postPreview h3,
+.postPreview h4,
+.postPreview h5,
+.postPreview h6,
+.postPreview p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+
+
+}
+
+/* .postPreview p {
+  display: inline;
+} */
+
+.postPreview a {
+  all: unset;
+  color: var(--color-primary-accent);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.postPreview a:hover {
+  text-decoration: none;
 }

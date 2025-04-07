@@ -12,10 +12,10 @@ function NewPost() {
 
   return (
     <main className={styles.newPostContainer}>
-      <h1>
+      <h1 className={styles.pageHeading}>
         Write your post in <a href="https://www.markdownguide.org/basic-syntax/"> Markdown</a>
       </h1>
-      <p>Draft posts to see the post editor implementation, though only admins can publish posts</p>
+      <p className={styles.note}>Draft posts to see the post editor implementation, though only admins can publish posts</p>
       <div className={styles.postItemsContainer}>
         <PostEditor postMarkdown={postMarkdown} handlePostMarkdown={handlePostMarkdown} />
         <PostPreview postMarkdown={postMarkdown} />

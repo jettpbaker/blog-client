@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import AuthContext from './AuthContext'
+import { useNavigate } from 'react-router'
 
 export const AuthProvider = ({ children }) => {
+  const navigate = useNavigate()
   const [isAuth, setIsAuth] = useState(() => {
     const token = localStorage.getItem('jwt')
     return !!token
@@ -15,6 +17,7 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     localStorage.removeItem('jwt')
     setIsAuth(false)
+    navigate('/')
   }
 
   const value = {
