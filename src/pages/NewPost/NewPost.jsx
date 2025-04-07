@@ -30,7 +30,9 @@ function NewPost() {
         </div>
         <div className={styles.buttonContainer}>
           <div className={styles.buttonBackground}>
-            <button onClick={() => setDisplayModal(true)}>Publish post</button>
+            <button onClick={() => setDisplayModal(true)} disabled={!postMarkdown}>
+              Publish post
+            </button>
           </div>
         </div>
       </main>

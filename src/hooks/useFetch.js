@@ -26,6 +26,7 @@ const useFetch = (initialUrl = null, initialOptions = {}) => {
         setData(responseData)
         return responseData
       } catch (err) {
+        console.log(fetchUrl, fetchOptions)
         console.error(err)
         return null
       } finally {
