@@ -1,10 +1,15 @@
 header {
+  /* position: fixed; */
+
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2.5rem;
 
   border-bottom: 1px solid var(--color-secondary-border);
+
+  /* background-color: var(--color-primary-background); */
+  /* width: 100vw; */
 }
 
 a {
@@ -61,7 +66,7 @@ a {
   color: var(--color-primary-accent);
 }
 
-ul {
+.navBarList {
   display: flex;
   align-items: center;
   gap: 1.5rem;
@@ -71,7 +76,7 @@ ul {
   list-style-type: none;
 }
 
-li {
+.navBarList li {
   padding: 0.6rem 0.3rem;
 }
 
@@ -96,7 +101,7 @@ a:hover,
 
 .link-accent {
   background-color: var(--color-secondary-bg);
-  padding: calc(0.6rem - 1px) calc(0.3rem - 1px);
+
   border: 1px solid var(--color-secondary-border);
   border-radius: 0.15rem;
 
@@ -108,7 +113,6 @@ a:hover,
   background-color: var(--color-primary-accent);
   color: var(--color-primary-text);
 
-  padding: calc(0.6rem - 1px) calc(0.3rem - 1px);
 
   border: 1px solid var(--color-primary-accent);
   border-radius: 0.15rem;

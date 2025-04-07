@@ -9,7 +9,7 @@ function Nav() {
 
   return (
     <nav>
-      <ul>
+      <ul className={styles.navBarList}>
         {isAuthenticated ? (
           <>
             <li>
@@ -19,7 +19,7 @@ function Nav() {
             </li>
 
             <li className={styles['link-accent']}>
-              <Link to="new-post">New Post</Link>
+              <Link to="post">New Post</Link>
             </li>
           </>
         ) : (
