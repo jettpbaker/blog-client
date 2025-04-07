@@ -4,7 +4,6 @@
   padding: 0.5rem;
 
   min-height: max-content;
-
 }
 
 .postPreview img {
@@ -21,8 +20,10 @@
 .postPreview p {
   margin-top: 0;
   margin-bottom: 1rem;
+}
 
-
+.postPreview hr {
+  margin: 1rem 0rem;
 }
 
 /* .postPreview p {
