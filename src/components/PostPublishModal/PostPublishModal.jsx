@@ -2,11 +2,18 @@ import { useState } from 'react'
 import styles from './PostPublishModal.module.css'
 import useFetch from '../../hooks/useFetch'
 import { useEffect } from 'react'
+import { LoaderCircle } from 'lucide-react'
+import { useNavigate } from 'react-router'
+import useToast from '../../hooks/useToast'
 const API_URL = import.meta.env.VITE_API_URL
 
 export function PostPublishModal({ handleModalClose, postMarkdown }) {
   const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
+  const [submitClicked, setSubmitClicked] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
+  const { showToast, RenderToast } = useToast()
+  const navigate = useNavigate()
 
   const {
     data: descriptionData,
@@ -21,6 +28,7 @@ export function PostPublishModal({ handleModalClose, postMarkdown }) {
     setTitle(e.target.value)
   }
 
+  // Fetch generated description as soon as modal opens to save time
   useEffect(() => {
     const url = `${API_URL}/ai`
     const options = {
@@ -34,39 +42,64 @@ export function PostPublishModal({ handleModalClose, postMarkdown }) {
     generateDescription(url, options)
   }, [])
 
+  // Will only POST the post when description is ready
   useEffect(() => {
-    if (descriptionData) {
-      setDescription(descriptionData.description)
+    if ((!descriptionData && submitClicked) || (descriptionData && !submitClicked)) {
+      const slowComponent = descriptionData ? 'user submit' : 'description'
+      console.log(`Waiting on ${slowComponent}...`)
     }
-  }, [descriptionData])
+
+    if (descriptionData?.description && submitClicked) {
+      const token = localStorage.getItem('jwt')
+
+      if (!token) {
+        console.error('You must be logged in to create a post.')
+        return
+      }
+
+      const description = descriptionData.description
+      const url = `${API_URL}/posts`
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ title, content: postMarkdown, description }),
+      }
+
+      postNewPost(url, options)
+    }
+  }, [descriptionData, submitClicked])
 
   useEffect(() => {
     if (postData) {
-      console.log(postData)
+      setLoading(false)
+      navigate('/')
     }
   }, [postData])
 
+  useEffect(() => {
+    if (postError) {
+      setError(postError)
+    }
+
+    if (descriptionError) {
+      setError(descriptionError)
+    }
+  }, [postError, descriptionError])
+
+  useEffect(() => {
+    if (error) {
+      console.error(error)
+      showToast('error', error)
+    }
+  }, [error, showToast])
+
   const handleSubmit = async (e) => {
     e.preventDefault()
-
-    const token = localStorage.getItem('jwt')
-
-    if (!token) {
-      console.error('You must be logged in to create a post.')
-      return
-    }
-
-    const url = `${API_URL}/posts`
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({ title, content: postMarkdown, description }),
-    }
-
-    postNewPost(url, options)
+    setSubmitClicked(true)
+    setLoading(true)
   }
 
   return (
@@ -92,10 +125,12 @@ export function PostPublishModal({ handleModalClose, postMarkdown }) {
               placeholder="Your Title Here"
               value={title}
               onChange={(e) => handleTitleChange(e)}
+              disabled={loading}
+              required
             />
           </div>
           <button type="submit" className={styles.modalSubmit}>
-            Confirm & Publish
+            {loading ? <LoaderCircle className="form-loading" /> : 'Confirm & Publish'}
           </button>
         </form>
       </div>
