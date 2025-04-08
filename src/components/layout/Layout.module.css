@@ -8,7 +8,9 @@ header {
 
   border-bottom: 1px solid var(--color-secondary-border);
 
-  /* background-color: var(--color-primary-background); */
+  background-color: var(--color-primary-background);
+  z-index: 2;
+
   /* width: 100vw; */
 }
 
@@ -112,7 +114,6 @@ a:hover,
 .link-accent:hover {
   background-color: var(--color-primary-accent);
   color: var(--color-primary-text);
-
 
   border: 1px solid var(--color-primary-accent);
   border-radius: 0.15rem;

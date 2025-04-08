@@ -1,4 +1,4 @@
-import App from '../App'
+import Home from '../pages/Home/Home'
 import Layout from '../components/layout/Layout'
 import Login from '../pages/Login/Login'
 import SignUp from '../pages/SignUp/SignUp'
@@ -9,7 +9,7 @@ const AppRoutes = () => {
   return (
     <Routes>
       <Route element={<Layout />}>
-        <Route index element={<App />} />
+        <Route index element={<Home />} />
         <Route path="login" element={<Login />} />
         <Route path="sign-up" element={<SignUp />} />
         <Route path="post" element={<NewPost />} />

@@ -1,0 +1,43 @@
+.postContainer {
+  padding: 1rem;
+  border: 1px solid var(--color-secondary-border);
+  border-radius: 0.15rem;
+
+  /* background-color: #0b0a0a76; */
+  background-color: transparent;
+
+  width: 45%;
+  min-height: 10rem;
+  text-wrap: pretty;
+
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.postContainer:hover {
+  border-color: rgb(144, 0, 0);
+  box-shadow: rgba(255, 70, 70, 0.5) 0rem 0rem 0.5rem 0rem, rgba(255, 63, 63, 0.5) 0rem 0rem 1rem 0rem;
+}
+
+.postTitle {
+  display: block;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+}
+
+.postAuthor {
+  margin-bottom: 1rem;
+}
+
+.postAuthor span {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary-accent);
+}
+
+.postDescription {
+  color: var(--color-secondary-text-muted);
+  margin-bottom: 1rem;
+}
+
+.postPublished {
+  font-weight: var(--font-weight-medium);
+}

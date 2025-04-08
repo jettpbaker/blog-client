@@ -29,7 +29,7 @@ function NewPost() {
           <PostPreview postMarkdown={postMarkdown} />
         </div>
         <div className={styles.buttonContainer}>
-          <div className={styles.buttonBackground}>
+          <div className={styles.buttonBackground} disabled={!postMarkdown}>
             <button onClick={() => setDisplayModal(true)} disabled={!postMarkdown}>
               Publish post
             </button>

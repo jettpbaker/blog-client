@@ -1,0 +1,31 @@
+.homeContainer {
+  height: 100%;
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+.blurOverlay {
+  background-color: transparent;
+  backdrop-filter: blur(6rem);
+  width: 100%;
+  height: 100%;
+
+  position: relative;
+
+  z-index: 2;
+
+  /* padding: 2rem 2rem; */
+}
+
+.homeContentContainer {
+  position: absolute;
+  background-color: transparent;
+
+  z-index: 3;
+
+  margin: 1rem 2.5rem;
+  width: calc(100% - 5rem);
+  height: calc(100% - 2rem);
+}
