@@ -1,0 +1,28 @@
+.loadingContainer {
+  width: 45%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.loadingContainer h2 {
+  margin: 0;
+}
+
+.loadingContainer svg {
+  stroke-width: 15%;
+  translate: 0rem 0.125rem;
+
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
