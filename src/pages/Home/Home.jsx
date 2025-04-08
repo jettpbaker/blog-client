@@ -46,21 +46,12 @@ function Home() {
     return <div>Error: {error}</div>
   }
 
-  const getCursorPosition = (e) => {
-    // The position values of the cursor is relative to the container it's in, so exludes the height of the header so the circle is offset
-    // There's nothing precise about the +3 and -68, I just played around with it until the circle was centered on the cursor and it works fine
-    const x = e.pageX
-    const y = e.pageY
-
-    setCursorPosition({ x, y })
-  }
-
   return (
     <>
       <main className={styles.homeContainer}>
-        <div className={styles.cursorContainer}></div>
-        <CursorEffect cursorPosition={cursorPosition} />
         <PostContainer />
+        <div className={styles.blurOverlay}></div>
+        <CursorEffect cursorPosition={cursorPosition} />
       </main>
     </>
   )

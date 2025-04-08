@@ -1,9 +1,12 @@
 .homeContainer {
-  height: 100vh;
-  width: 100vw;
+  height: calc(100% - 4rem);
+
+  position: relative;
+
+  overflow: hidden;
 }
 
-.cursorContainer {
+.blurOverlay {
   background-color: transparent;
   backdrop-filter: blur(6rem);
   width: 100%;
