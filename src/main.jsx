@@ -13,7 +13,7 @@ createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <AuthProvider>
         <ToastProvider>
-          {/* <DevBanner /> */}
+          <DevBanner />
           <AppRoutes />
         </ToastProvider>
       </AuthProvider>
