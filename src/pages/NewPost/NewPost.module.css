@@ -51,6 +51,10 @@
   transition: all 0.25s ease 0s;
 }
 
+.buttonBackground button:disabled {
+  cursor: not-allowed;
+}
+
 .buttonBackground:hover {
   box-shadow: rgba(255, 70, 70, 0.8) 0rem 0rem 0.75rem 0rem, rgba(255, 63, 63, 0.8) 0rem 0rem 1.5rem 0rem;
 }
