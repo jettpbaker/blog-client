@@ -6,11 +6,15 @@
   /* background-color: #0b0a0a76; */
   background-color: transparent;
 
-  width: 45%;
+  width: 40%;
   min-height: 10rem;
   text-wrap: pretty;
 
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .postContainer:hover {
