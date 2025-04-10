@@ -2,9 +2,15 @@ import styles from './Post.module.css'
 import { NewComment } from '../../components/NewComment/NewComment'
 import { RenderComments } from '../../components/RenderComments.jsx/RenderComments'
 import { useState } from 'react'
+import useFetch from '../../hooks/useFetch'
+import { useEffect } from 'react'
+const AUTH_URL = import.meta.env.VITE_AUTH_URL
 
 export function PostComments({ postId, comments }) {
   const [commentsState, setCommentsState] = useState(comments)
+  const { data, loading, error, executeFetch } = useFetch()
+  const [firstName, setFirstname] = useState('')
+  const [lastName, setLastName] = useState('')
 
   const createGhostComment = (author, content) => {
     const createdAt = new Date()
@@ -19,9 +25,32 @@ export function PostComments({ postId, comments }) {
     setCommentsState([comment, ...commentsState])
   }
 
+  // Get current user's first and last name in case they comment
+  useEffect(() => {
+    const token = localStorage.getItem('jwt')
+    const url = `${AUTH_URL}/user`
+    const options = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    }
+
+    executeFetch(url, options)
+  }, [])
+
+  useEffect(() => {
+    if (data) {
+      const { firstName, lastName } = data
+      setFirstname(firstName)
+      setLastName(lastName)
+    }
+  }, [data])
+
   return (
     <section className={styles.commentsContainer}>
-      <NewComment postId={postId} createGhostComment={createGhostComment} />
+      <NewComment postId={postId} createGhostComment={createGhostComment} firstName={firstName} lastName={lastName} />
       <RenderComments comments={commentsState} />
     </section>
   )

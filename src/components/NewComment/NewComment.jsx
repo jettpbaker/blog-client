@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react'
 import styles from './NewComment.module.css'
 import useFetch from '../../hooks/useFetch'
+import useToast from '../../hooks/useToast'
 const API_URL = import.meta.env.VITE_API_URL
 
-export function NewComment({ postId, createGhostComment }) {
+export function NewComment({ postId, createGhostComment, firstName, lastName }) {
   const [comment, setComment] = useState('')
   const { data, loading, error, executeFetch } = useFetch()
+  const { showToast, RenderToast } = useToast()
 
   const handleCommentChange = (e) => {
     setComment(e.target.value)
@@ -13,10 +15,14 @@ export function NewComment({ postId, createGhostComment }) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-
     setComment('')
 
     const token = localStorage.getItem('jwt')
+    if (!token) {
+      showToast('warning', 'Please sign in to leave a comment!')
+      return
+    }
+
     const url = `${API_URL}/comments`
     const options = {
       method: 'POST',
@@ -28,8 +34,7 @@ export function NewComment({ postId, createGhostComment }) {
     }
 
     executeFetch(url, options)
-
-    createGhostComment({ firstName: 'Jett', lastName: 'Baker', admin: true }, comment)
+    createGhostComment({ firstName, lastName }, comment)
   }
 
   return (
@@ -44,6 +49,7 @@ export function NewComment({ postId, createGhostComment }) {
         />
         <button type="submit">Comment</button>
       </form>
+      <RenderToast />
     </div>
   )
 }
