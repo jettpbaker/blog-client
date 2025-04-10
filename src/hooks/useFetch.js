@@ -20,6 +20,9 @@ const useFetch = (initialUrl = null, initialOptions = {}) => {
       setLoading(true)
       setError(null)
 
+      console.log('URL', fetchUrl)
+      console.log('Options', fetchOptions)
+
       // TODO check time
       const cachedData = cacheGet(fetchUrl)
       if (cachedData) {
