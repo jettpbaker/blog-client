@@ -46,7 +46,7 @@ export function PostPublishModal({ handleModalClose, postMarkdown }) {
   }, [])
 
   // Will only POST the post when description is ready
-  useEffect(() => {
+  useEffect(async () => {
     if ((!descriptionData && submitClicked) || (descriptionData && !submitClicked)) {
       const slowComponent = descriptionData ? 'user submit' : 'description'
       console.log(`Waiting on ${slowComponent}...`)
@@ -74,6 +74,10 @@ export function PostPublishModal({ handleModalClose, postMarkdown }) {
       try {
         console.log('Trying to create a new post...')
         console.log(url)
+
+        const tempFetchTest = await fetch(url, options)
+        console.log(tempFetchTest)
+
         postNewPost(url, options)
         cacheDelete(cacheKey)
       } catch (err) {
