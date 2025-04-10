@@ -72,6 +72,7 @@ export function PostPublishModal({ handleModalClose, postMarkdown }) {
       }
 
       try {
+        console.log('Trying to create a new post...')
         postNewPost(url, options)
         cacheDelete(cacheKey)
       } catch (err) {
