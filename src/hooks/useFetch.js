@@ -13,6 +13,7 @@ const useFetch = (initialUrl = null, initialOptions = {}) => {
 
   const executeFetch = useCallback(
     async (overrideUrl = null, overrideOptions = null) => {
+      console.log('Entering execute fetch...')
       const fetchUrl = overrideUrl || url
       const fetchOptions = overrideOptions || options
 
@@ -20,11 +21,12 @@ const useFetch = (initialUrl = null, initialOptions = {}) => {
       setLoading(true)
       setError(null)
 
-      console.log('URL', fetchUrl)
-      console.log('Options', fetchOptions)
+      // console.log('URL', fetchUrl)
+      // console.log('Options', fetchOptions)
 
       // TODO check time
       const cachedData = cacheGet(fetchUrl)
+      console.log(cachedData)
       if (cachedData) {
         const now = Date.now()
         const timeSinceCache = now - cachedData.timestamp
@@ -39,8 +41,12 @@ const useFetch = (initialUrl = null, initialOptions = {}) => {
       }
 
       try {
+        console.log('Executing fetch...')
         const response = await fetch(fetchUrl, fetchOptions)
         const responseData = await response.json()
+
+        console.log(response)
+        console.log(responseData)
 
         if (!response.ok) {
           setError(responseData.message)
