@@ -13,6 +13,23 @@
   max-width: 70ch;
 }
 
+.postAndCommentsContainer svg {
+  stroke-width: 15%;
+  translate: 0rem 0.125rem;
+  margin-top: 1rem;
+
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
 .postPageContainer h1 {
   font-size: 2rem;
   line-height: 2rem;

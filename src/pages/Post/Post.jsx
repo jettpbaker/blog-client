@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import { RenderPost } from './RenderPost'
 import { PostComments } from './PostComments'
 import { useState } from 'react'
+import { LoaderCircle } from 'lucide-react'
 const API_URL = import.meta.env.VITE_API_URL
 
 function Post() {
@@ -40,6 +41,7 @@ function Post() {
             <PostComments postId={id} comments={data.comments} />{' '}
           </>
         )}
+        {loading && <LoaderCircle />}
       </section>
     </main>
   )
