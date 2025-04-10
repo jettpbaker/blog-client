@@ -37,7 +37,7 @@ function Post() {
           <>
             {' '}
             <RenderPost title={data.title} author={author} content={data.content} published={data.createdAt} />{' '}
-            <PostComments postId={id} />{' '}
+            <PostComments postId={id} comments={data.comments} />{' '}
           </>
         )}
       </section>

@@ -1,0 +1,29 @@
+.newComment form input {
+  background-color: var(--color-primary-bg);
+  color: var(--color-primrary-text);
+  border: none;
+  border-bottom: 1px solid var(--color-primary-accent);
+  font-family: var(--font-family-primary);
+
+  width: 100%;
+  height: 2rem;
+  padding: 0rem 0.125rem;
+}
+
+.newComment form input:focus {
+  outline: none;
+}
+
+.newComment form button {
+  width: 7rem;
+  background-color: var(--color-primary-bg);
+  color: var(--color-primrary-text);
+  border: 1px solid var(--color-secondary-border);
+  border-radius: 0.15rem;
+
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.5rem;
+  margin-left: calc(100% - 7rem);
+
+  font-weight: 500;
+}
