@@ -3,7 +3,7 @@ import styles from './NewComment.module.css'
 import useFetch from '../../hooks/useFetch'
 const API_URL = import.meta.env.VITE_API_URL
 
-export function NewComment({ postId }) {
+export function NewComment({ postId, createGhostComment }) {
   const [comment, setComment] = useState('')
   const { data, loading, error, executeFetch } = useFetch()
 
@@ -28,6 +28,8 @@ export function NewComment({ postId }) {
     }
 
     executeFetch(url, options)
+
+    createGhostComment({ firstName: 'Jett', lastName: 'Baker', admin: true }, comment)
   }
 
   return (
