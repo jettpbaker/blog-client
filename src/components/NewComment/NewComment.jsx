@@ -2,12 +2,15 @@ import { useState, useEffect } from 'react'
 import styles from './NewComment.module.css'
 import useFetch from '../../hooks/useFetch'
 import useToast from '../../hooks/useToast'
+import useCache from '../../hooks/useCache'
 const API_URL = import.meta.env.VITE_API_URL
 
 export function NewComment({ postId, createGhostComment, firstName, lastName }) {
   const [comment, setComment] = useState('')
   const { data, loading, error, executeFetch } = useFetch()
   const { showToast, RenderToast } = useToast()
+  const { cacheDelete } = useCache()
+  const cacheKey = `${API_URL}/posts/${postId}`
 
   const handleCommentChange = (e) => {
     setComment(e.target.value)
@@ -35,6 +38,7 @@ export function NewComment({ postId, createGhostComment, firstName, lastName }) 
 
     executeFetch(url, options)
     createGhostComment({ firstName, lastName }, comment)
+    cacheDelete(cacheKey)
   }
 
   return (

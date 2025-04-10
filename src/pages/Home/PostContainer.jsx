@@ -9,8 +9,6 @@ const API_URL = import.meta.env.VITE_API_URL
 export function PostContainer() {
   const { data, loading, error, executeFetch } = useFetch()
 
-  const fakeLoading = true
-
   useEffect(() => {
     const url = `${API_URL}/posts`
     const options = {

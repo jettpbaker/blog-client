@@ -1,9 +1,10 @@
 import { useState, useCallback } from 'react'
+import useCache from './useCache'
 
-const cache = new Map()
-const ttl = 1000 * 60 * 10 // 10 minutes
+const cacheTTL = 1000 * 60 * 10 // 10 min
 
 const useFetch = (initialUrl = null, initialOptions = {}) => {
+  const { cacheSet, cacheDelete, cacheGet } = useCache()
   const [url, setUrl] = useState(initialUrl)
   const [options, setOptions] = useState(initialOptions)
   const [data, setData] = useState(null)
@@ -19,19 +20,18 @@ const useFetch = (initialUrl = null, initialOptions = {}) => {
       setLoading(true)
       setError(null)
 
-      const method = fetchOptions.method
-
-      if (method === 'GET' && cache.has(fetchUrl)) {
-        const cachedEntry = cache.get(fetchUrl)
+      // TODO check time
+      const cachedData = cacheGet(fetchUrl)
+      if (cachedData) {
         const now = Date.now()
-        if (now - cachedEntry.timestamp < ttl) {
-          console.log(`Cache hit for: ${fetchUrl}`)
-          setData(cachedEntry.data)
+        const timeSinceCache = now - cachedData.timestamp
+
+        if (timeSinceCache < cacheTTL) {
+          const responseData = cachedData.value
+          setData(responseData)
           setLoading(false)
-          setError(null)
-          return cachedEntry.data
-        } else {
-          cache.delete(fetchUrl)
+          setError(false)
+          return responseData
         }
       }
 
@@ -44,7 +44,9 @@ const useFetch = (initialUrl = null, initialOptions = {}) => {
         }
         setData(responseData)
 
-        cache.set(fetchUrl, { data: responseData, timestamp: Date.now() })
+        if (fetchOptions.method === 'GET') {
+          cacheSet(fetchUrl, responseData)
+        }
 
         return responseData
       } catch (err) {
