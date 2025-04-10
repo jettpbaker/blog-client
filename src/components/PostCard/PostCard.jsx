@@ -7,10 +7,13 @@ export function PostCard({ title, author, description, published, id }) {
     month: 'long',
     day: 'numeric',
   })
+  const linkUrl = `/post/${id}`
 
   return (
     <div className={styles.postContainer}>
-      <Link className={styles.postTitle}>{title}</Link>
+      <Link className={styles.postTitle} to={linkUrl}>
+        {title}
+      </Link>
       <p className={styles.postAuthor}>
         Written by <span>{author}</span>
       </p>

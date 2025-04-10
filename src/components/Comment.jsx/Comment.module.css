@@ -1,0 +1,14 @@
+.comment {
+  border-bottom: 1px solid var(--color-secondary-border);
+  padding-bottom: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.commentAuthor {
+  margin: 0;
+}
+
+.commentDate {
+  color: var(--color-secondary-text-muted);
+  margin-bottom: 0.5rem;
+}

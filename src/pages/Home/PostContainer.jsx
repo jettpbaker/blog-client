@@ -3,6 +3,7 @@ import { PostCard } from '../../components/PostCard/PostCard'
 import { PostLoading } from '../../components/PostLoading/PostLoading'
 import useFetch from '../../hooks/useFetch'
 import { useEffect } from 'react'
+import { useMemo } from 'react'
 const API_URL = import.meta.env.VITE_API_URL
 
 export function PostContainer() {
@@ -35,6 +36,7 @@ export function PostContainer() {
               author={fullName}
               description={post.description}
               published={post.createdAt}
+              id={post.id}
               key={post.id}
             />
           )
