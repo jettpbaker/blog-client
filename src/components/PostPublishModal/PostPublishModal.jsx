@@ -71,8 +71,13 @@ export function PostPublishModal({ handleModalClose, postMarkdown }) {
         body: JSON.stringify({ title, content: postMarkdown, description }),
       }
 
-      postNewPost(url, options)
-      cacheDelete(cacheKey)
+      try {
+        postNewPost(url, options)
+        cacheDelete(cacheKey)
+      } catch (err) {
+        console.error('Error creating post: ', err)
+        setError(error)
+      }
     }
   }, [descriptionData, submitClicked])
 
