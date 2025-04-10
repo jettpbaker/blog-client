@@ -1,5 +1,8 @@
 import { useState, useCallback } from 'react'
 
+const cache = new Map()
+const ttl = 1000 * 60 * 10 // 10 minutes
+
 const useFetch = (initialUrl = null, initialOptions = {}) => {
   const [url, setUrl] = useState(initialUrl)
   const [options, setOptions] = useState(initialOptions)
@@ -16,6 +19,22 @@ const useFetch = (initialUrl = null, initialOptions = {}) => {
       setLoading(true)
       setError(null)
 
+      const method = fetchOptions.method
+
+      if (method === 'GET' && cache.has(fetchUrl)) {
+        const cachedEntry = cache.get(fetchUrl)
+        const now = Date.now()
+        if (now - cachedEntry.timestamp < ttl) {
+          console.log(`Cache hit for: ${fetchUrl}`)
+          setData(cachedEntry.data)
+          setLoading(false)
+          setError(null)
+          return cachedEntry.data
+        } else {
+          cache.delete(fetchUrl)
+        }
+      }
+
       try {
         const response = await fetch(fetchUrl, fetchOptions)
         const responseData = await response.json()
@@ -24,6 +43,9 @@ const useFetch = (initialUrl = null, initialOptions = {}) => {
           setError(responseData.message)
         }
         setData(responseData)
+
+        cache.set(fetchUrl, { data: responseData, timestamp: Date.now() })
+
         return responseData
       } catch (err) {
         console.error(err)
