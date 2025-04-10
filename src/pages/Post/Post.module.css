@@ -1,0 +1,118 @@
+.postPageContainer {
+  flex: 1;
+  padding: 1rem 2.5rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  overflow-x: hidden;
+}
+
+.postAndCommentsContainer {
+  max-width: 70ch;
+}
+
+.postPageContainer h1 {
+  font-size: 2rem;
+  line-height: 2rem;
+}
+
+.title {
+  margin: 1rem 0rem 0.25rem 0rem;
+}
+
+.postContainer {
+  margin-bottom: 2rem;
+}
+
+.postHeadingContainer {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.divider {
+  border: 0;
+  height: 1px;
+  background-color: var(--color-secondary-border);
+}
+
+.markdown {
+  text-wrap-style: pretty;
+  line-height: 1.5rem;
+}
+
+.markdown a {
+  display: inline;
+  color: var(--color-primary-accent);
+  text-decoration: underline;
+}
+
+.markdown a:hover {
+  color: var(--color-primary-accent);
+  text-decoration: none;
+}
+
+.markdown p {
+  margin-bottom: 0.5rem;
+}
+
+.markdown blockquote {
+  font-style: italic;
+  border-left: 0.33rem solid var(--color-primary-accent);
+  padding-left: 1rem;
+  margin: 0.5rem 0;
+}
+
+.markdown img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.15rem;
+  transition: transform 0.25s ease;
+}
+
+.markdown img:hover {
+  transform: scale(1.025);
+}
+
+.markdown hr {
+  border: 0;
+  height: 1px;
+  background-color: var(--color-secondary-border);
+  margin: 1rem 0rem;
+}
+
+.commentsContainer {
+}
+
+.newComment form input {
+  background-color: var(--color-primary-bg);
+  color: var(--color-primrary-text);
+  border: none;
+  border-bottom: 1px solid var(--color-primary-accent);
+  font-family: var(--font-family-primary);
+
+  width: 100%;
+  height: 2rem;
+  padding: 0rem 0.125rem;
+}
+
+.newComment form input:focus {
+  outline: none;
+}
+
+.newComment form button {
+  width: fit-content;
+  background-color: var(--color-primary-bg);
+  color: var(--color-primrary-text);
+  border: 1px solid var(--color-secondary-border);
+  border-radius: 0.15rem;
+
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.5rem;
+  float: right;
+
+  font-weight: 500;
+}

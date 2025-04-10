@@ -26,7 +26,6 @@ const useFetch = (initialUrl = null, initialOptions = {}) => {
         setData(responseData)
         return responseData
       } catch (err) {
-        console.log(fetchUrl, fetchOptions)
         console.error(err)
         return null
       } finally {
@@ -35,6 +34,10 @@ const useFetch = (initialUrl = null, initialOptions = {}) => {
     },
     [url, options]
   )
+
+  if (initialUrl && initialOptions) {
+    executeFetch()
+  }
 
   const setFetchParams = useCallback((newUrl = null, newOptions = null) => {
     if (newUrl !== undefined) setUrl(newUrl)
