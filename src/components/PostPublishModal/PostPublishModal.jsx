@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import { LoaderCircle } from 'lucide-react'
 import { useNavigate } from 'react-router'
 import useToast from '../../hooks/useToast'
+import useCache from '../../hooks/useCache'
 const API_URL = import.meta.env.VITE_API_URL
 
 export function PostPublishModal({ handleModalClose, postMarkdown }) {
@@ -14,6 +15,8 @@ export function PostPublishModal({ handleModalClose, postMarkdown }) {
   const [error, setError] = useState(null)
   const { showToast, RenderToast } = useToast()
   const navigate = useNavigate()
+  const { cacheDelete } = useCache()
+  const cacheKey = `${API_URL}/posts`
 
   const {
     data: descriptionData,
@@ -69,6 +72,7 @@ export function PostPublishModal({ handleModalClose, postMarkdown }) {
       }
 
       postNewPost(url, options)
+      cacheDelete(cacheKey)
     }
   }, [descriptionData, submitClicked])
 

@@ -1,6 +1,10 @@
 import { useState, useCallback } from 'react'
+import useCache from './useCache'
+
+const cacheTTL = 1000 * 60 * 10 // 10 min
 
 const useFetch = (initialUrl = null, initialOptions = {}) => {
+  const { cacheSet, cacheDelete, cacheGet } = useCache()
   const [url, setUrl] = useState(initialUrl)
   const [options, setOptions] = useState(initialOptions)
   const [data, setData] = useState(null)
@@ -16,6 +20,21 @@ const useFetch = (initialUrl = null, initialOptions = {}) => {
       setLoading(true)
       setError(null)
 
+      // TODO check time
+      const cachedData = cacheGet(fetchUrl)
+      if (cachedData) {
+        const now = Date.now()
+        const timeSinceCache = now - cachedData.timestamp
+
+        if (timeSinceCache < cacheTTL) {
+          const responseData = cachedData.value
+          setData(responseData)
+          setLoading(false)
+          setError(false)
+          return responseData
+        }
+      }
+
       try {
         const response = await fetch(fetchUrl, fetchOptions)
         const responseData = await response.json()
@@ -24,6 +43,11 @@ const useFetch = (initialUrl = null, initialOptions = {}) => {
           setError(responseData.message)
         }
         setData(responseData)
+
+        if (fetchOptions.method === 'GET') {
+          cacheSet(fetchUrl, responseData)
+        }
+
         return responseData
       } catch (err) {
         console.error(err)
