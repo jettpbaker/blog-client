@@ -3,6 +3,7 @@ import styles from './Layout.module.css'
 import { Link } from 'react-router'
 import Logo from './Logo'
 import { useAuth } from '../../hooks/useAuth'
+import GitHub from '../../assets/github.svg'
 
 function Nav() {
   const { isAuthenticated, logout } = useAuth()
@@ -38,6 +39,7 @@ function Nav() {
 }
 
 function Layout() {
+  const { isAuthenticated } = useAuth()
   return (
     <>
       <header>
@@ -47,6 +49,14 @@ function Layout() {
         <Nav />
       </header>
       <Outlet />
+      <footer className={styles.layoutFooter}>
+        <div className={styles.repo}>
+          <Link to="https://github.com/jettpbaker/blog-client" className={styles.githubLink}>
+            <img src={GitHub} alt="" />
+          </Link>
+        </div>
+        <div className={styles.footerContent}>{isAuthenticated && <Link>My posts</Link>}</div>
+      </footer>
     </>
   )
 }

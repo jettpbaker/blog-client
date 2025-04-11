@@ -15,7 +15,7 @@ createRoot(document.getElementById('root')).render(
       <AuthProvider>
         <CacheProvider>
           <ToastProvider>
-            <DevBanner />
+            {/* <DevBanner /> */}
             <AppRoutes />
           </ToastProvider>
         </CacheProvider>
