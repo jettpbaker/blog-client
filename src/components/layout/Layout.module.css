@@ -12,6 +12,8 @@ header {
 
   z-index: 2;
 
+  min-height: 2.5rem;
+
   /* width: 100vw; */
 }
 
@@ -126,4 +128,27 @@ a:hover,
 
 .link-accent a:hover {
   color: var(--color-primary-text);
+}
+
+.layoutFooter {
+  padding: 1rem 2.5rem;
+  border-top: 1px solid var(--color-secondary-border);
+  background-color: var(--color-primary-background);
+
+  z-index: 2;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  min-height: 2.5rem;
+}
+
+.githubLink {
+  display: block;
+}
+
+.repo img {
+  width: 1.5rem;
+  height: auto;
 }
