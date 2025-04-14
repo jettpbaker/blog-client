@@ -5,6 +5,7 @@ import SignUp from '../pages/SignUp/SignUp'
 import NewPost from '../pages/NewPost/NewPost'
 import Post from '../pages/Post/Post'
 import UserPosts from '../pages/UserPosts/UserPosts'
+import NotFound from '../pages/NotFound/NotFound'
 import { Routes, Route } from 'react-router'
 
 const AppRoutes = () => {
@@ -16,8 +17,9 @@ const AppRoutes = () => {
         <Route path="sign-up" element={<SignUp />} />
         <Route path="post" element={<NewPost />} />
         <Route path="post/:id" element={<Post />} />
-        <Route path="my-posts" element={<UserPosts />} />
+        <Route path="my-posts" element={<UserPosts />} />\
       </Route>
+      <Route path="*" element={<NotFound />} />
     </Routes>
   )
 }
