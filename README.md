@@ -2,4 +2,4 @@
 
 - [x] Add footer to layout
 - [x] 'My posts' page
-- [ ] Add 404 page
+- [x] Add 404 page
