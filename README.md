@@ -1,5 +1,5 @@
 # TODO
 
-- [X] Add footer to layout
-- [ ] 'Edit my posts' page
-- [ ] Add admin password form
+- [x] Add footer to layout
+- [ ] 'My posts' page
+- [ ] Add 404 page
