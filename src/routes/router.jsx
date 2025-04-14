@@ -4,6 +4,7 @@ import Login from '../pages/Login/Login'
 import SignUp from '../pages/SignUp/SignUp'
 import NewPost from '../pages/NewPost/NewPost'
 import Post from '../pages/Post/Post'
+import UserPosts from '../pages/UserPosts/UserPosts'
 import { Routes, Route } from 'react-router'
 
 const AppRoutes = () => {
@@ -15,6 +16,7 @@ const AppRoutes = () => {
         <Route path="sign-up" element={<SignUp />} />
         <Route path="post" element={<NewPost />} />
         <Route path="post/:id" element={<Post />} />
+        <Route path="my-posts" element={<UserPosts />} />
       </Route>
     </Routes>
   )

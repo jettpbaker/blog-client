@@ -55,7 +55,7 @@ function Layout() {
             <img src={GitHub} alt="" />
           </Link>
         </div>
-        <div className={styles.footerContent}>{isAuthenticated && <Link>My posts</Link>}</div>
+        <div className={styles.footerContent}>{isAuthenticated && <Link to="/my-posts">My posts</Link>}</div>
       </footer>
     </>
   )

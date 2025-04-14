@@ -1,0 +1,87 @@
+.mainContainer {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  padding: 1rem 2.5rem;
+}
+
+.postsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.postCard {
+  width: 50%;
+}
+
+.cardBody {
+  border: 1px solid var(--color-secondary-border);
+  border-radius: 0.15rem;
+  padding: 0.5rem;
+}
+
+.postHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 0.5rem;
+}
+
+.postHeader h2 {
+  margin: 0;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 1rem;
+}
+
+.postDescription {
+  color: var(--color-secondary-text-muted);
+}
+
+.postCard button {
+  color: var(--color-primary-text);
+  font-weight: bold;
+}
+
+.publishButton {
+  background-color: rgb(36, 178, 36);
+}
+
+.publishButton:hover {
+  background-color: rgb(26, 132, 26);
+}
+
+.unpublishButton {
+  background-color: var(--color-primary-accent);
+}
+
+.unpublishButton:hover {
+  background-color: #cc2828;
+}
+
+.unpublishButton:disabled {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+.unpublishButton:disabled:hover {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+.deleteButton {
+  background-color: transparent;
+  border: 1px solid var(--color-primary-accent);
+  transition: color 0.25s ease, background-color 0.25s ease;
+}
+
+.deleteButton:hover {
+  background-color: white;
+  color: var(--color-primary-accent);
+}

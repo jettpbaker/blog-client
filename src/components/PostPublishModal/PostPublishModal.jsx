@@ -78,6 +78,7 @@ export function PostPublishModal({ handleModalClose, postMarkdown }) {
         console.log('Trying to create a new post...')
         console.log(url)
         cacheDelete(cacheKey)
+        cacheDelete(`${API_URL}/posts/user-posts`)
         postNewPost(url, options)
       } catch (err) {
         console.error('Error creating post: ', err)
