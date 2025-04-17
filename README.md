@@ -7,4 +7,4 @@
         - [] Edit post page
 
     - Fixes:
-        - [] Fix 'red aura' turning into 'red halo' when page scrolling
+        - [X] Fix 'red aura' turning into 'red halo' when page scrolling
