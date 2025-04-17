@@ -8,6 +8,9 @@ import useToast from '../../hooks/useToast'
 import useCache from '../../hooks/useCache'
 const API_URL = import.meta.env.VITE_API_URL
 
+// Break out logic into its own function
+// Clean up console.logs
+
 export function PostPublishModal({ handleModalClose, postMarkdown }) {
   const [title, setTitle] = useState('')
   const [submitClicked, setSubmitClicked] = useState(false)
@@ -18,14 +21,9 @@ export function PostPublishModal({ handleModalClose, postMarkdown }) {
   const { cacheDelete } = useCache()
   const cacheKey = `${API_URL}/posts`
 
-  const {
-    data: descriptionData,
-    loading: descriptionLoading,
-    error: descriptionError,
-    executeFetch: generateDescription,
-  } = useFetch()
+  const { data: descriptionData, error: descriptionError, executeFetch: generateDescription } = useFetch()
 
-  const { data: postData, loading: postLoading, error: postError, executeFetch: postNewPost } = useFetch()
+  const { data: postData, error: postError, executeFetch: postNewPost } = useFetch()
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value)
@@ -43,7 +41,7 @@ export function PostPublishModal({ handleModalClose, postMarkdown }) {
     }
 
     generateDescription(url, options)
-  }, [])
+  }, [generateDescription, postMarkdown])
 
   // Will only POST the post when description is ready
   useEffect(() => {
@@ -85,14 +83,14 @@ export function PostPublishModal({ handleModalClose, postMarkdown }) {
         setError(error)
       }
     }
-  }, [descriptionData, submitClicked])
+  }, [descriptionData, submitClicked, cacheDelete, postMarkdown, title, cacheKey, error, showToast, postNewPost])
 
   useEffect(() => {
     if (postData) {
       setLoading(false)
       navigate('/')
     }
-  }, [postData])
+  }, [postData, navigate])
 
   useEffect(() => {
     if (postError) {
@@ -149,6 +147,7 @@ export function PostPublishModal({ handleModalClose, postMarkdown }) {
           </button>
         </form>
       </div>
+      <RenderToast />
     </div>
   )
 }

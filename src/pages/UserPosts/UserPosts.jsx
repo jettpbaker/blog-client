@@ -1,50 +1,17 @@
 import { useEffect, useState } from 'react'
+import { Post } from './Post'
 import useFetch from '../../hooks/useFetch'
-import styles from './UserPosts.module.css'
 import useCache from '../../hooks/useCache'
-
+import styles from './UserPosts.module.css'
 const API_URL = import.meta.env.VITE_API_URL
 const AUTH_URL = import.meta.env.VITE_AUTH_URL
 
-function Post({ post, isAdmin, published, onTogglePublish, id, handleUnPublishPost, handleDeletePost }) {
-  const date = new Date(post.createdAt).toLocaleDateString('en-GB', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  })
-
-  return (
-    <div className={styles.postCard}>
-      <div className={styles.cardBody}>
-        <div className={styles.postHeader}>
-          <h2 className={styles.postTitle}>{post.title}</h2>
-          <p className={styles.postDate}>Written {date}</p>
-        </div>
-        <p className={styles.postDescription}>{post.description || 'No description provided.'}</p>
-        <div className={styles.buttonContainer}>
-          <button
-            className={!published ? styles.publishButton : styles.unpublishButton}
-            disabled={!isAdmin}
-            onClick={() => handleUnPublishPost(id)}
-          >
-            {!published ? 'Publish' : 'Unpublish'}
-          </button>
-          <button className={styles.deleteButton} onClick={() => handleDeletePost(id)}>
-            Delete post
-          </button>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 function UserPosts() {
-  const { data, loading, error, executeFetch } = useFetch()
+  const { data, loading, executeFetch: fetchPosts } = useFetch()
   const [posts, setPosts] = useState([])
-  const { data: isAdmin, loading: loadingIsAdming, error: errorIsAdmin, executeFetch: executeFetchIsAdmin } = useFetch()
-  const { executeFetch: unPublishPost } = useFetch()
-  const { executeFetch: deletePost } = useFetch()
-  const { logCache, cacheSet, cacheDelete, cacheGet } = useCache()
+  const { data: isAdmin, executeFetch: executeFetchIsAdmin } = useFetch()
+  const { executeFetch } = useFetch()
+  const { cacheDelete } = useCache()
   const token = localStorage.getItem('jwt')
 
   useEffect(() => {
@@ -61,6 +28,9 @@ function UserPosts() {
         Authorization: `Bearer ${token}`,
       },
     }
+
+    fetchPosts(postsUrl, postOptions)
+
     const adminUrl = `${AUTH_URL}/admin`
     const adminOptions = {
       method: 'GET',
@@ -70,13 +40,12 @@ function UserPosts() {
       },
     }
 
-    executeFetch(postsUrl, postOptions)
     executeFetchIsAdmin(adminUrl, adminOptions)
-  }, [])
+  }, [executeFetchIsAdmin, fetchPosts, token])
 
   useEffect(() => {
     if (data) {
-      const postsArray = Array.isArray(data) ? data : data?.posts || []
+      const postsArray = data ? data : []
       setPosts(postsArray)
     }
   }, [data])
@@ -93,8 +62,10 @@ function UserPosts() {
 
     cacheDelete(`${API_URL}/posts/user-posts`)
     cacheDelete(`${API_URL}/posts`)
-    unPublishPost(url, options)
+    executeFetch(url, options)
     const targetPost = posts.find((post) => post.id === id)
+
+    // TODO Make this immutable
     targetPost.published = !targetPost.published
   }
 
@@ -110,15 +81,15 @@ function UserPosts() {
 
     cacheDelete(`${API_URL}/posts/user-posts`)
     cacheDelete(`${API_URL}/posts`)
-    deletePost(url, options)
+    executeFetch(url, options)
     setPosts(posts.filter((post) => post.id !== id))
   }
 
   return (
     <main className={styles.mainContainer}>
       <h1 className={styles.pageTitle}>Your Posts</h1>
-
       <section className={styles.postsContainer}>
+        {loading && 'Loading Posts...'}
         {posts &&
           posts.map((post) => (
             <Post
