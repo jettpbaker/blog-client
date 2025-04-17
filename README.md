@@ -1,5 +1,10 @@
 # TODO
 
-- [x] Add footer to layout
-- [x] 'My posts' page
-- [x] Add 404 page
+    - Clean Up:
+        - [] Move logic from `PostPublishModal` into seperate js file
+
+    - Features:
+        - [] Edit post page
+
+    - Fixes:
+        - [] Fix 'red aura' turning into 'red halo' when page scrolling

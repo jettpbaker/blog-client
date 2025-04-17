@@ -1,5 +1,9 @@
 import CacheContext from './CacheContext'
 
+// Marks for trying but woefully innadequte, sticks out like a sore thumb
+// Check out tanstack query and/or dexie for indexedDB for offline browsing
+// Separate into library code
+
 const cache = new Map()
 
 export const CacheProvider = ({ children }) => {
