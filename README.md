@@ -1,7 +1,7 @@
 # TODO
 
     - Clean Up:
-        - [] Move logic from `PostPublishModal` into seperate js file
+        - [X] Move logic from `PostPublishModal` into seperate js file
 
     - Features:
         - [] Edit post page
