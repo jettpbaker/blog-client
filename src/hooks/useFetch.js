@@ -4,7 +4,7 @@ import useCache from './useCache'
 const cacheTTL = 1000 * 60 * 10 // 10 min
 
 const useFetch = (initialUrl = null, initialOptions = {}) => {
-  const { cacheSet, cacheDelete, cacheGet } = useCache()
+  const { cacheSet, cacheGet } = useCache()
   const [url, setUrl] = useState(initialUrl)
   const [options, setOptions] = useState(initialOptions)
   const [data, setData] = useState(null)
@@ -59,7 +59,7 @@ const useFetch = (initialUrl = null, initialOptions = {}) => {
         setLoading(false)
       }
     },
-    [url, options]
+    [url, options, cacheSet, cacheGet]
   )
 
   if (initialUrl && initialOptions) {
