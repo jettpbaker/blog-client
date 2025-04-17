@@ -7,6 +7,7 @@ import Post from '../pages/Post/Post'
 import UserPosts from '../pages/UserPosts/UserPosts'
 import NotFound from '../pages/NotFound/NotFound'
 import { Routes, Route } from 'react-router'
+import EditPost from '../pages/EditPost/EditPost'
 
 const AppRoutes = () => {
   return (
@@ -17,7 +18,8 @@ const AppRoutes = () => {
         <Route path="sign-up" element={<SignUp />} />
         <Route path="post" element={<NewPost />} />
         <Route path="post/:id" element={<Post />} />
-        <Route path="my-posts" element={<UserPosts />} />\
+        <Route path="post/edit/:id" element={<EditPost />} />
+        <Route path="my-posts" element={<UserPosts />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
