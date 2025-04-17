@@ -1,0 +1,63 @@
+.editPost {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  padding: 1rem 2.5rem 1rem 2.5rem;
+}
+
+.postItemsContainer {
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+  gap: 2rem;
+
+  margin-bottom: 1rem;
+}
+
+.postItemsContainer section {
+  width: 50%;
+}
+
+.buttonContainer {
+  width: calc(50% - 1rem);
+  margin-left: auto;
+}
+
+.buttonBackground {
+  border-radius: 0.15rem;
+  transition: all 0.25s ease 0s;
+}
+
+.buttonBackground button:disabled {
+  cursor: not-allowed;
+}
+
+.buttonBackground:hover {
+  box-shadow: rgba(255, 70, 70, 0.8) 0rem 0rem 0.75rem 0rem, rgba(255, 63, 63, 0.8) 0rem 0rem 1.5rem 0rem;
+}
+
+.buttonBackground button {
+  margin: 0;
+  background-color: var(--color-primary-text);
+  font-weight: bold;
+}
+
+@media (max-width: 500px) {
+  .editPost {
+    padding: 1rem 0.75rem;
+  }
+
+  .postItemsContainer section {
+    width: 100%;
+    min-height: 11rem;
+  }
+
+  .postItemsContainer {
+    flex-wrap: wrap;
+  }
+
+  .saveButton {
+    width: 100%;
+  }
+}

@@ -85,3 +85,21 @@
   background-color: white;
   color: var(--color-primary-accent);
 }
+
+.editButton {
+  background-color: transparent;
+}
+
+.editButton:hover {
+  background-color: transparent;
+}
+
+.editButton svg {
+  stroke: white;
+
+  transition: stroke 0.25s ease;
+}
+
+.editButton:hover svg {
+  stroke: var(--color-primary-accent);
+}

@@ -1,6 +1,6 @@
 .toast {
   position: fixed;
-  bottom: 4rem;
+  bottom: 10rem;
   right: 4rem;
   z-index: 1000;
   border-radius: 0.6rem;

@@ -4,11 +4,7 @@ import Markdown from 'react-markdown'
 export function PostPreview({ postMarkdown }) {
   return (
     <section className={styles.postPreview}>
-      <Markdown
-        lineBreaks={true} // Enable line breaks
-      >
-        {postMarkdown}
-      </Markdown>
+      <Markdown lineBreaks={true}>{postMarkdown}</Markdown>
     </section>
   )
 }

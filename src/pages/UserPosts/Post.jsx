@@ -1,4 +1,6 @@
 import styles from './UserPosts.module.css'
+import { Pencil } from 'lucide-react'
+import { Link } from 'react-router'
 
 export function Post({ post, isAdmin, published, id, handleUnPublishPost, handleDeletePost }) {
   const date = new Date(post.createdAt).toLocaleDateString('en-GB', {
@@ -11,8 +13,15 @@ export function Post({ post, isAdmin, published, id, handleUnPublishPost, handle
     <div className={styles.postCard}>
       <div className={styles.cardBody}>
         <div className={styles.postHeader}>
-          <h2 className={styles.postTitle}>{post.title}</h2>
-          <p className={styles.postDate}>Written {date}</p>
+          <div className={styles.postHeaderInfo}>
+            <h2 className={styles.postTitle}>{post.title}</h2>
+            <p className={styles.postDate}>Written {date}</p>
+          </div>
+          <div className={styles.postHeaderActions}>
+            <Link to={`/post/edit/${id}`} state={{ postContent: post.content }} className={styles.editButton}>
+              <Pencil />
+            </Link>
+          </div>
         </div>
         <p className={styles.postDescription}>{post.description || 'No description provided.'}</p>
         <div className={styles.buttonContainer}>
