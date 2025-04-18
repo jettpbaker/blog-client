@@ -2,7 +2,7 @@
 
     - Clean Up:
         - [X] Move logic from `PostPublishModal` into separate js file
-        - [] Move logic from `EditPost` into separate js file
+        - [X] Move logic from `EditPost` into separate js file
 
     - Features:
         - [X] Edit post page
