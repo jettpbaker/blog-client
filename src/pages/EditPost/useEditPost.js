@@ -53,9 +53,10 @@ export function useEditPost({ postContent }) {
     if (newPostData) {
       cacheDelete(`${API_URL}/posts`)
       cacheDelete(`${API_URL}/posts/user-posts`)
+      cacheDelete(`${API_URL}/posts/${id}`)
       navigate('/')
     }
-  }, [newPostData, cacheDelete, navigate])
+  }, [newPostData, cacheDelete, id, navigate])
 
   useEffect(() => {
     if (postError) {
