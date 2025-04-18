@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router'
-import { LoaderCircle } from 'lucide-react'
+import { Loading } from '../../components/Loading/Loading'
 
 function SignUpForm({ handleSubmit, loading }) {
   const [firstName, setFirstName] = useState('')
@@ -79,8 +79,7 @@ function SignUpForm({ handleSubmit, loading }) {
             required
           />
         </div>
-
-        <button type="submit">{!loading ? 'Sign up' : <LoaderCircle className="form-loading" />}</button>
+        <button type="submit">{!loading ? 'Sign up' : <Loading size="small" />}</button>
       </form>
       <hr />
       <p className="form-alternate-option">

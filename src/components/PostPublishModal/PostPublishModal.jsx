@@ -1,5 +1,5 @@
 import styles from './PostPublishModal.module.css'
-import { LoaderCircle } from 'lucide-react'
+import { Loading } from '../Loading/Loading'
 import { usePostPublishModal } from './usePostPublishModal'
 import useToast from '../../hooks/useToast'
 
@@ -35,7 +35,7 @@ export function PostPublishModal({ handleModalClose, postMarkdown }) {
             />
           </div>
           <button type="submit" className={styles.modalSubmit}>
-            {loading ? <LoaderCircle className="form-loading" /> : 'Confirm & Publish'}
+            {loading ? <Loading size="small" /> : 'Confirm & Publish'}
           </button>
         </form>
       </div>
