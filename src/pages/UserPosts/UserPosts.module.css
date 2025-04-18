@@ -27,7 +27,7 @@
 .postHeader {
   display: flex;
   justify-content: space-between;
-  align-items: end;
+  align-items: start;
   margin-bottom: 0.5rem;
 }
 
@@ -90,6 +90,7 @@
 
 .editButton {
   background-color: transparent;
+  margin-top: 0.5rem;
 }
 
 .editButton:hover {
