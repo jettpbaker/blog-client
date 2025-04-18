@@ -14,6 +14,8 @@
         - [X] Fix 'red aura' turning into 'red halo' when page scrolling
         - [X] Fix scrolling issue on 'Your Posts' page
         - [X] Fix being able to edit other people's posts
+        - [] Add loading component to 'Your Posts' page
+        - [] Editing a post did not properly delete cache in prod
 
 
     - Notes:
