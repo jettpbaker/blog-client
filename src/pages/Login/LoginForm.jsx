@@ -1,6 +1,7 @@
 import { Link } from 'react-router'
 import { useState } from 'react'
-import { LoaderCircle } from 'lucide-react'
+import { Loading } from '../../components/Loading/Loading'
+// import styles from './LoginForm.module.css'
 
 function LoginForm({ handleSubmit, loading }) {
   const [email, setEmail] = useState('')
@@ -52,7 +53,7 @@ function LoginForm({ handleSubmit, loading }) {
           />
         </div>
 
-        <button type="submit">{!loading ? 'Sign in' : <LoaderCircle className="form-loading" />}</button>
+        <button type="submit">{!loading ? 'Sign in' : <Loading size="small" />}</button>
       </form>
       <hr />
       <p className="form-alternate-option">

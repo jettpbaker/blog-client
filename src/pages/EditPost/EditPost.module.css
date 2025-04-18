@@ -41,6 +41,7 @@
   margin: 0;
   background-color: var(--color-primary-text);
   font-weight: bold;
+  height: 2.5rem;
 }
 
 @media (max-width: 500px) {
