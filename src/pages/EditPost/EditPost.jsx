@@ -1,4 +1,5 @@
 import styles from './EditPost.module.css'
+import { Loading } from '../../components/Loading/Loading'
 import { PostEditor } from '../../components/PostEditor/PostEditor'
 import { PostPreview } from '../../components/PostPreview/PostPreview'
 import { useParams, useLocation } from 'react-router'
@@ -75,9 +76,7 @@ function EditPost() {
   return (
     <main className={styles.editPost}>
       {postLoading ? (
-        <div className={styles.loadingContainer}>
-          <div className={styles.loadingSpinner}>Loading...</div>
-        </div>
+        <Loading size="large" />
       ) : (
         <>
           <div className={styles.postItemsContainer}>
