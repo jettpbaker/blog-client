@@ -15,7 +15,7 @@
         - [X] Fix scrolling issue on 'Your Posts' page
         - [X] Fix being able to edit other people's posts
         - [X] Add loading component to 'Your Posts' page
-        - [] Fix offset edit icon in 'Your Posts' page
+        - [X] Fix offset edit icon in 'Your Posts' page
         - [] Editing a post did not properly delete cache in prod
 
 
