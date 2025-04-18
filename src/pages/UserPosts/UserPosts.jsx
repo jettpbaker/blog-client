@@ -5,6 +5,7 @@ import useCache from '../../hooks/useCache'
 import styles from './UserPosts.module.css'
 const API_URL = import.meta.env.VITE_API_URL
 const AUTH_URL = import.meta.env.VITE_AUTH_URL
+import { Loading } from '../../components/Loading/Loading'
 
 function UserPosts() {
   const { data, loading, executeFetch: fetchPosts } = useFetch()
@@ -89,7 +90,7 @@ function UserPosts() {
     <main className={styles.mainContainer}>
       <h1 className={styles.pageTitle}>Your Posts</h1>
       <section className={styles.postsContainer}>
-        {loading && 'Loading Posts...'}
+        {loading && <Loading size="large" className={styles.yourPostsLoading} />}
         {posts &&
           posts.map((post) => (
             <Post
