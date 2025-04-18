@@ -1,26 +1,30 @@
 # TODO
 
-    - Clean Up:
-        - [X] Move logic from `PostPublishModal` into separate js file
-        - [X] Move logic from `EditPost` into separate js file
+## Clean Up
 
-    - Features:
-        - [X] Edit post page
-        - [] Timeout expired JWTs
-        - [X] Add a general loading component?
-        - [X] Add a loading state to editing posts
+- [x] Move logic from `PostPublishModal` into separate js file
+- [x] Move logic from `EditPost` into separate js file
 
-    - Fixes:
-        - [X] Fix 'red aura' turning into 'red halo' when page scrolling
-        - [X] Fix scrolling issue on 'Your Posts' page
-        - [X] Fix being able to edit other people's posts
-        - [X] Add loading component to 'Your Posts' page
-        - [X] Fix offset edit icon in 'Your Posts' page
-        - [X] Editing a post did not properly delete cache in prod
+## Features
 
+- [x] Edit post page
+- [ ] Timeout expired JWTs
+- [x] Add a general loading component?
+- [x] Add a loading state to editing posts
 
-    - Notes:
-        - [] When creating proper README, ensure to mention next thing to do would be swap data passing in
+## Fixes
 
-    - Check:
-        - [] Make sure new loading component works
+- [x] Fix 'red aura' turning into 'red halo' when page scrolling
+- [x] Fix scrolling issue on 'Your Posts' page
+- [x] Fix being able to edit other people's posts
+- [x] Add loading component to 'Your Posts' page
+- [x] Fix offset edit icon in 'Your Posts' page
+- [x] Editing a post did not properly delete cache in prod
+
+## Check
+
+- [ ] Make sure new loading component works
+
+## Notes
+
+- [ ] When creating proper README, mention that next step is swapping data-passing in
