@@ -20,7 +20,8 @@
 - [x] Add loading component to 'Your Posts' page
 - [x] Fix offset edit icon in 'Your Posts' page
 - [x] Editing a post did not properly delete cache in prod
-- [ ] Increase minimum width on specific post page
+- [x] Increase minimum width on specific post page
+- [ ] Some pages are not properly mobile responsive
 
 ## Check
 
