@@ -1,5 +1,6 @@
 .newPostContainer {
-  height: calc(100% - 1rem);
+  /* height: calc(100% - 1rem); */
+  flex: 1;
   min-height: fit-content;
 
   padding: 1rem 2.5rem 1rem 2.5rem;
