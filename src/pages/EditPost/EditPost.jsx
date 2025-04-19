@@ -3,12 +3,11 @@ import { Loading } from '../../components/Loading/Loading'
 import { PostEditor } from '../../components/PostEditor/PostEditor'
 import { PostPreview } from '../../components/PostPreview/PostPreview'
 import { useEditPost } from './useEditPost'
-
-const API_URL = import.meta.env.VITE_API_URL
+import { useLocation } from 'react-router'
 
 function EditPost() {
+  const location = useLocation()
   const postContent = location.state?.postContent || ''
-  console.log(postContent)
   const { content, handlePostMarkdown, handleSavePost, postLoading, newPostLoading, RenderToast } = useEditPost({
     postContent,
   })
