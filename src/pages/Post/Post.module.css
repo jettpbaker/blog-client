@@ -10,7 +10,7 @@
 }
 
 .postAndCommentsContainer {
-  min-width: 70ch;
+  max-width: 70ch;
 }
 
 .postAndCommentsContainer svg {
@@ -91,7 +91,7 @@
 }
 
 .markdown img:hover {
-  transform: scale(1.025);
+  transform: scale(1.015);
 }
 
 .markdown hr {

@@ -2,6 +2,7 @@
   /* height: calc(100% - 1rem); */
   flex: 1;
   min-height: fit-content;
+  overflow-x: hidden;
 
   padding: 1rem 2.5rem 1rem 2.5rem;
 
