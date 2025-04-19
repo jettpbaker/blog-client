@@ -26,9 +26,16 @@
   margin: 1rem 0rem;
 }
 
-/* .postPreview p {
-  display: inline;
-} */
+.postPreview blockquote {
+  font-style: italic;
+  border-left: 0.33rem solid var(--color-primary-accent);
+  padding-left: 1rem;
+  margin: 0.5rem 0;
+}
+
+.postPreview h1 {
+  font-size: 2rem;
+}
 
 .postPreview a {
   all: unset;

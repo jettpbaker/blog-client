@@ -25,6 +25,10 @@
 - [x] When navigating from home to new post page the header (or footer?) changes size
 - [x] When posting a new post, loading component makes the button height super tall
 - [x] Something funky going on with passing data into a post when editing it
+- [x] Width scrollbar appearing when adding an image to a new post
+- [x] Small h1 elements when writing a new post
+- [x] Check quote blocks in new post
+- [x] Images expand post preview too much
 
 ## Check
 
