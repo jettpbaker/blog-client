@@ -8,6 +8,7 @@ const API_URL = import.meta.env.VITE_API_URL
 
 function EditPost() {
   const postContent = location.state?.postContent || ''
+  console.log(postContent)
   const { content, handlePostMarkdown, handleSavePost, postLoading, newPostLoading, RenderToast } = useEditPost({
     postContent,
   })
