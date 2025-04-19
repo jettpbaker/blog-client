@@ -21,7 +21,7 @@
 - [x] Fix offset edit icon in 'Your Posts' page
 - [x] Editing a post did not properly delete cache in prod
 - [x] Increase minimum width on specific post page
-- [ ] Some pages are not properly mobile responsive
+- [x] Some pages are not properly mobile responsive
 
 ## Check
 

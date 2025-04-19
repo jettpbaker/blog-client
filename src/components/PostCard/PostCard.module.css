@@ -6,9 +6,11 @@
   /* background-color: #0b0a0a76; */
   background-color: transparent;
 
-  width: 40%;
   min-height: 10rem;
   text-wrap: pretty;
+
+  max-width: 40%;
+  box-sizing: border-box;
 
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
 
@@ -44,4 +46,10 @@
 
 .postPublished {
   font-weight: var(--font-weight-medium);
+}
+
+@media (max-width: 500px) {
+  .postContainer {
+    max-width: 100%;
+  }
 }
