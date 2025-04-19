@@ -26,7 +26,6 @@ export const AuthProvider = ({ children }) => {
     if (!decodedToken) return
 
     const currentTime = Math.floor(Date.now() / 1000)
-    console.log('Token expiration:', decodedToken.exp, 'Current time:', currentTime)
 
     if (decodedToken.exp <= currentTime) {
       logout()

@@ -7,7 +7,6 @@ function parseJwt() {
     b64 += '='.repeat((4 - (b64.length % 4)) % 4)
 
     const decodedToken = JSON.parse(atob(b64))
-    console.log(decodedToken)
     return decodedToken
   } catch (error) {
     console.error('Error decoding JWT:', error)
