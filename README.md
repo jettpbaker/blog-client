@@ -8,7 +8,7 @@
 ## Features
 
 - [x] Edit post page
-- [ ] Timeout expired JWTs
+- [x] Timeout expired JWTs
 - [x] Add a general loading component?
 - [x] Add a loading state to editing posts
 

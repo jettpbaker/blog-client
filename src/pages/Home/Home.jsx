@@ -3,11 +3,12 @@ import { PostContainer } from './PostContainer'
 import { CursorEffect } from '../../components/CursorEffect/CursorEffect'
 import styles from './Home.module.css'
 import { useEffect, useRef } from 'react'
+import { useAuth } from '../../hooks/useAuth'
 
 function Home() {
+  const { checkExpiration } = useAuth()
   const [cursorPosition, setCursorPosition] = useState(0, 0)
   const containerRef = useRef(null)
-
   useEffect(() => {
     const handlePointerMove = (e) => {
       const x = e.clientX
@@ -23,6 +24,10 @@ function Home() {
       window.removeEventListener('pointermove', handlePointerMove)
     }
   }, [])
+
+  useEffect(() => {
+    checkExpiration()
+  }, [checkExpiration])
 
   return (
     <>
