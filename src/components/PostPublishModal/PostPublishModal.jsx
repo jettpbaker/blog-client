@@ -35,7 +35,7 @@ export function PostPublishModal({ handleModalClose, postMarkdown }) {
             />
           </div>
           <button type="submit" className={styles.modalSubmit}>
-            {loading ? <Loading size="small" /> : 'Confirm & Publish'}
+            {loading ? <Loading size="small" className={styles.buttonLoading} /> : 'Confirm & Publish'}
           </button>
         </form>
       </div>

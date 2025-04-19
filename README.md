@@ -22,10 +22,13 @@
 - [x] Editing a post did not properly delete cache in prod
 - [x] Increase minimum width on specific post page
 - [x] Some pages are not properly mobile responsive
+- [ ] When navigating from home to new post page the header (or footer?) changes size
+- [x] When posting a new post, loading component makes the button height super tall
+- [ ] Something funky going on with passing data into a post when editing it
 
 ## Check
 
-- [ ] Make sure new loading component works
+- [x] Make sure new loading component works
 
 ## Notes
 
