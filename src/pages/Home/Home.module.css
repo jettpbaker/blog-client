@@ -41,6 +41,13 @@
 
   margin: 1rem 2.5rem;
   flex: 1;
-  /* width: calc(100% - 5rem); */
+  width: calc(100% - 5rem);
   /* height: calc(100% - 2rem); */
+}
+
+@media (max-width: 500px) {
+  .homeContentContainer {
+    margin: 1rem 0.75rem;
+    width: calc(100% - 1.5rem);
+  }
 }
