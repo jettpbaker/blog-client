@@ -10,7 +10,7 @@
 }
 
 .postAndCommentsContainer {
-  max-width: 70ch;
+  min-width: 70ch;
 }
 
 .postAndCommentsContainer svg {
@@ -101,5 +101,12 @@
   margin: 1rem 0rem;
 }
 
-.commentsContainer {
+@media (max-width: 500px) {
+  .postPageContainer {
+    padding: 1rem 0.75rem;
+  }
+
+  .postAndCommentsContainer {
+    min-width: 100%;
+  }
 }
