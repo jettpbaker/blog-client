@@ -4,7 +4,7 @@ import useCache from '../../hooks/useCache'
 import useToast from '../../hooks/useToast'
 import useFetch from '../../hooks/useFetch'
 
-const API_URL = import.meta.env.VITE_API_URL
+const SERVER_URL = import.meta.env.VITE_SERVER_URL
 
 export function usePostPublishModal(postMarkdown) {
   const [title, setTitle] = useState('')
@@ -21,7 +21,7 @@ export function usePostPublishModal(postMarkdown) {
 
   // Generate description on mount
   useEffect(() => {
-    generateDescription(`${API_URL}/ai`, {
+    generateDescription(`${SERVER_URL}/api/posts/generate-description`, {
       method: 'POST',
       body: JSON.stringify({ postMarkdown }),
       headers: {
@@ -41,12 +41,12 @@ export function usePostPublishModal(postMarkdown) {
     }
 
     try {
-      cacheDelete(`${API_URL}/posts`)
-      cacheDelete(`${API_URL}/posts/user-posts`)
+      cacheDelete(`${SERVER_URL}/api/posts`)
+      cacheDelete(`${SERVER_URL}/api/users/me/posts`)
 
       console.log('Creating post')
 
-      createPost(`${API_URL}/posts`, {
+      createPost(`${SERVER_URL}/api/posts`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -6,7 +6,7 @@ import { RenderPost } from './RenderPost'
 import { PostComments } from './PostComments'
 import { useState } from 'react'
 import { Loading } from '../../components/Loading/Loading'
-const API_URL = import.meta.env.VITE_API_URL
+const SERVER_URL = import.meta.env.VITE_SERVER_URL
 
 function Post() {
   const { id } = useParams()
@@ -14,7 +14,7 @@ function Post() {
   const [author, setAuthor] = useState('')
 
   useEffect(() => {
-    const url = `${API_URL}/posts/${id}`
+    const url = `${SERVER_URL}/api/posts/${id}`
     const options = {
       method: 'GET',
       headers: {
@@ -23,7 +23,7 @@ function Post() {
     }
 
     executeFetch(url, options)
-  }, [])
+  }, [executeFetch, id])
 
   useEffect(() => {
     if (data) {

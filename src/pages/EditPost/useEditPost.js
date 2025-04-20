@@ -4,7 +4,7 @@ import useToast from '../../hooks/useToast'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router'
 import useCache from '../../hooks/useCache'
-const API_URL = import.meta.env.VITE_API_URL
+const SERVER_URL = import.meta.env.VITE_SERVER_URL
 
 export function useEditPost({ postContent }) {
   const [content, setContent] = useState(postContent)
@@ -17,7 +17,7 @@ export function useEditPost({ postContent }) {
 
   useEffect(() => {
     if (!postContent) {
-      fetchPostContent(`${API_URL}/posts/${id}`, {
+      fetchPostContent(`${SERVER_URL}/api/posts/${id}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -39,8 +39,8 @@ export function useEditPost({ postContent }) {
   const handleSavePost = () => {
     const token = localStorage.getItem('jwt')
 
-    savePostContent(`${API_URL}/posts/${id}/content`, {
-      method: 'PUT',
+    savePostContent(`${SERVER_URL}/api/posts/${id}`, {
+      method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
@@ -51,9 +51,9 @@ export function useEditPost({ postContent }) {
 
   useEffect(() => {
     if (newPostData) {
-      cacheDelete(`${API_URL}/posts`)
-      cacheDelete(`${API_URL}/posts/user-posts`)
-      cacheDelete(`${API_URL}/posts/${id}`)
+      cacheDelete(`${SERVER_URL}/api/posts`)
+      cacheDelete(`${SERVER_URL}/api/users/me/posts`)
+      cacheDelete(`${SERVER_URL}/api/posts/${id}`)
       navigate('/')
     }
   }, [newPostData, cacheDelete, id, navigate])
