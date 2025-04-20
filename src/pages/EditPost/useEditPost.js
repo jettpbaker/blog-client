@@ -38,7 +38,10 @@ export function useEditPost({ postContent }) {
 
   const handleSavePost = () => {
     const token = localStorage.getItem('jwt')
-
+    if (!token) {
+      showToast('error', 'You must be logged in to save a post')
+      return
+    }
     savePostContent(`${SERVER_URL}/api/posts/${id}`, {
       method: 'PATCH',
       headers: {
