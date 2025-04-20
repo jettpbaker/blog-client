@@ -58,6 +58,18 @@
   background-color: rgb(26, 132, 26);
 }
 
+.publishButton:disabled {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+.publishButton:disabled:hover {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}
+
 .unpublishButton {
   background-color: var(--color-primary-accent);
 }
@@ -73,6 +85,18 @@
 }
 
 .unpublishButton:disabled:hover {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+.buttonContainer .unpublishButton:disabled {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+.buttonContainer .unpublishButton:disabled:hover {
   background-color: #cccccc;
   color: #666666;
   cursor: not-allowed;
