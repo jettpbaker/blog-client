@@ -29,6 +29,8 @@
 - [x] Small h1 elements when writing a new post
 - [x] Check quote blocks in new post
 - [x] Images expand post preview too much
+- [x] Deleting a post didn't delete the post
+- [ ] Publish post not greyed out if you are not admin
 
 ## Check
 
