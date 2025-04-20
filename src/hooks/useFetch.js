@@ -20,10 +20,6 @@ const useFetch = (initialUrl = null, initialOptions = {}) => {
       setLoading(true)
       setError(null)
 
-      // console.log('URL', fetchUrl)
-      // console.log('Options', fetchOptions)
-
-      // TODO check time
       const cachedData = cacheGet(fetchUrl)
       if (cachedData) {
         const now = Date.now()
@@ -40,8 +36,6 @@ const useFetch = (initialUrl = null, initialOptions = {}) => {
 
       try {
         const response = await fetch(fetchUrl, fetchOptions)
-
-        console.log('Response', response)
 
         // Check if the response is JSON
         const contentType = response.headers.get('content-type')
