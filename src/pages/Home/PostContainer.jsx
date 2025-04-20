@@ -2,11 +2,13 @@ import styles from './PostContainer.module.css'
 import { PostCard } from '../../components/PostCard/PostCard'
 import { PostLoading } from '../../components/PostLoading/PostLoading'
 import useFetch from '../../hooks/useFetch'
+import useToast from '../../hooks/useToast'
 import { useEffect } from 'react'
 const SERVER_URL = import.meta.env.VITE_SERVER_URL
 
 export function PostContainer() {
   const { data, loading, error, executeFetch } = useFetch()
+  const { showToast, RenderToast } = useToast()
 
   useEffect(() => {
     const url = `${SERVER_URL}/api/posts`
@@ -19,6 +21,12 @@ export function PostContainer() {
 
     executeFetch(url, options)
   }, [executeFetch])
+
+  useEffect(() => {
+    if (error) {
+      showToast('error', error)
+    }
+  }, [error, showToast])
 
   return (
     <div className={styles.postContainer}>
@@ -39,6 +47,7 @@ export function PostContainer() {
           )
         })}
       {loading && <PostLoading />}
+      <RenderToast />
     </div>
   )
 }
