@@ -21,11 +21,18 @@ export function usePostPublishModal(postMarkdown) {
 
   // Generate description on mount
   useEffect(() => {
+    const token = localStorage.getItem('jwt')
+    if (!token) {
+      setError(new Error('You must be logged in to create a post.'))
+      return
+    }
+
     generateDescription(`${SERVER_URL}/api/posts/generate-description`, {
       method: 'POST',
       body: JSON.stringify({ postMarkdown }),
       headers: {
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
       },
     })
   }, [postMarkdown, generateDescription])
@@ -43,8 +50,6 @@ export function usePostPublishModal(postMarkdown) {
     try {
       cacheDelete(`${SERVER_URL}/api/posts`)
       cacheDelete(`${SERVER_URL}/api/users/me/posts`)
-
-      console.log('Creating post')
 
       createPost(`${SERVER_URL}/api/posts`, {
         method: 'POST',

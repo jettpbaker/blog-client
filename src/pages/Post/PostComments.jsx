@@ -4,7 +4,7 @@ import { RenderComments } from '../../components/RenderComments.jsx/RenderCommen
 import { useState } from 'react'
 import useFetch from '../../hooks/useFetch'
 import { useEffect } from 'react'
-const AUTH_URL = import.meta.env.VITE_AUTH_URL
+const SERVER_URL = import.meta.env.VITE_SERVER_URL
 
 export function PostComments({ postId, comments }) {
   const [commentsState, setCommentsState] = useState(comments)
@@ -28,7 +28,7 @@ export function PostComments({ postId, comments }) {
   // Get current user's first and last name in case they comment
   useEffect(() => {
     const token = localStorage.getItem('jwt')
-    const url = `${AUTH_URL}/user`
+    const url = `${SERVER_URL}/api/users/me`
     const options = {
       method: 'GET',
       headers: {
@@ -38,7 +38,7 @@ export function PostComments({ postId, comments }) {
     }
 
     executeFetch(url, options)
-  }, [])
+  }, [executeFetch])
 
   useEffect(() => {
     if (data) {

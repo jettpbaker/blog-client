@@ -1,16 +1,16 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import styles from './NewComment.module.css'
 import useFetch from '../../hooks/useFetch'
 import useToast from '../../hooks/useToast'
 import useCache from '../../hooks/useCache'
-const API_URL = import.meta.env.VITE_API_URL
+const SERVER_URL = import.meta.env.VITE_SERVER_URL
 
 export function NewComment({ postId, createGhostComment, firstName, lastName }) {
   const [comment, setComment] = useState('')
   const { data, loading, error, executeFetch } = useFetch()
   const { showToast, RenderToast } = useToast()
   const { cacheDelete } = useCache()
-  const cacheKey = `${API_URL}/posts/${postId}`
+  const cacheKey = `${SERVER_URL}/api/posts/${postId}`
 
   const handleCommentChange = (e) => {
     setComment(e.target.value)
@@ -26,7 +26,7 @@ export function NewComment({ postId, createGhostComment, firstName, lastName }) 
       return
     }
 
-    const url = `${API_URL}/comments`
+    const url = `${SERVER_URL}/api/posts/${postId}/comments`
     const options = {
       method: 'POST',
       headers: {

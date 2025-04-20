@@ -63,10 +63,8 @@ function UserPosts() {
     cacheDelete(`${SERVER_URL}/api/users/me/posts`)
     cacheDelete(`${SERVER_URL}/api/posts`)
     executeFetch(url, options)
-    const targetPost = posts.find((post) => post.id === id)
 
-    // TODO Make this immutable
-    targetPost.published = !targetPost.published
+    setPosts(posts.map((post) => (post.id === id ? { ...post, published: !post.published } : post)))
   }
 
   const handleDeletePost = (id) => {
