@@ -4,7 +4,7 @@ import useFetch from '../../hooks/useFetch'
 import { useNavigate } from 'react-router'
 import { useEffect } from 'react'
 import useToast from '../../hooks/useToast'
-const AUTH_URL = import.meta.env.VITE_AUTH_URL
+const SERVER_URL = import.meta.env.VITE_SERVER_URL
 
 function SignUp() {
   const { login } = useAuth()
@@ -27,7 +27,7 @@ function SignUp() {
   }, [data, login, navigate])
 
   const handleSubmit = async (firstName, lastName, email, password) => {
-    const url = `${AUTH_URL}/signup`
+    const url = `${SERVER_URL}/api/users/signup`
     const options = {
       method: 'POST',
       headers: {

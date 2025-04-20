@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import LoginForm from './LoginForm'
 import useToast from '../../hooks/useToast'
 import useFetch from '../../hooks/useFetch'
-const AUTH_URL = import.meta.env.VITE_AUTH_URL
+const SERVER_URL = import.meta.env.VITE_SERVER_URL
 
 function Login() {
   const navigate = useNavigate()
@@ -28,7 +28,7 @@ function Login() {
   }, [data, login, navigate])
 
   const handleSubmit = async (email, password) => {
-    const url = `${AUTH_URL}/login`
+    const url = `${SERVER_URL}/api/users/login`
     const options = {
       method: 'POST',
       headers: {

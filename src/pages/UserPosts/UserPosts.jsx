@@ -3,8 +3,7 @@ import { Post } from './Post'
 import useFetch from '../../hooks/useFetch'
 import useCache from '../../hooks/useCache'
 import styles from './UserPosts.module.css'
-const API_URL = import.meta.env.VITE_API_URL
-const AUTH_URL = import.meta.env.VITE_AUTH_URL
+const SERVER_URL = import.meta.env.VITE_SERVER_URL
 import { Loading } from '../../components/Loading/Loading'
 
 function UserPosts() {
@@ -21,7 +20,7 @@ function UserPosts() {
       return
     }
 
-    const postsUrl = `${API_URL}/posts/user-posts`
+    const postsUrl = `${SERVER_URL}/api/users/me/posts`
     const postOptions = {
       method: 'GET',
       headers: {
@@ -32,7 +31,7 @@ function UserPosts() {
 
     fetchPosts(postsUrl, postOptions)
 
-    const adminUrl = `${AUTH_URL}/admin`
+    const adminUrl = `${SERVER_URL}/api/users/me/admin`
     const adminOptions = {
       method: 'GET',
       headers: {
@@ -52,26 +51,24 @@ function UserPosts() {
   }, [data])
 
   const handleUnPublishPost = (id) => {
-    const url = `${API_URL}/posts/${id}`
+    const url = `${SERVER_URL}/api/posts/${id}/publish`
     const options = {
-      method: 'PUT',
+      method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
     }
 
-    cacheDelete(`${API_URL}/posts/user-posts`)
-    cacheDelete(`${API_URL}/posts`)
+    cacheDelete(`${SERVER_URL}/api/users/me/posts`)
+    cacheDelete(`${SERVER_URL}/api/posts`)
     executeFetch(url, options)
-    const targetPost = posts.find((post) => post.id === id)
 
-    // TODO Make this immutable
-    targetPost.published = !targetPost.published
+    setPosts(posts.map((post) => (post.id === id ? { ...post, published: !post.published } : post)))
   }
 
   const handleDeletePost = (id) => {
-    const url = `${API_URL}/posts/${id}`
+    const url = `${SERVER_URL}/api/posts/${id}`
     const options = {
       method: 'DELETE',
       headers: {
@@ -80,8 +77,8 @@ function UserPosts() {
       },
     }
 
-    cacheDelete(`${API_URL}/posts/user-posts`)
-    cacheDelete(`${API_URL}/posts`)
+    cacheDelete(`${SERVER_URL}/api/users/me/posts`)
+    cacheDelete(`${SERVER_URL}/api/posts`)
     executeFetch(url, options)
     setPosts(posts.filter((post) => post.id !== id))
   }

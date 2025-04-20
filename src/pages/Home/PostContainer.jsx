@@ -3,14 +3,13 @@ import { PostCard } from '../../components/PostCard/PostCard'
 import { PostLoading } from '../../components/PostLoading/PostLoading'
 import useFetch from '../../hooks/useFetch'
 import { useEffect } from 'react'
-import { useMemo } from 'react'
-const API_URL = import.meta.env.VITE_API_URL
+const SERVER_URL = import.meta.env.VITE_SERVER_URL
 
 export function PostContainer() {
   const { data, loading, error, executeFetch } = useFetch()
 
   useEffect(() => {
-    const url = `${API_URL}/posts`
+    const url = `${SERVER_URL}/api/posts`
     const options = {
       method: 'GET',
       headers: {
@@ -19,7 +18,7 @@ export function PostContainer() {
     }
 
     executeFetch(url, options)
-  }, [])
+  }, [executeFetch])
 
   return (
     <div className={styles.postContainer}>
