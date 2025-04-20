@@ -41,6 +41,8 @@ const useFetch = (initialUrl = null, initialOptions = {}) => {
       try {
         const response = await fetch(fetchUrl, fetchOptions)
 
+        console.log('Response', response)
+
         // Check if the response is JSON
         const contentType = response.headers.get('content-type')
         if (!contentType || !contentType.includes('application/json')) {
