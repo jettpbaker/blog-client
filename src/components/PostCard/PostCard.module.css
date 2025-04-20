@@ -9,7 +9,7 @@
   min-height: 10rem;
   text-wrap: pretty;
 
-  max-width: 40%;
+  width: 50%;
   box-sizing: border-box;
 
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
