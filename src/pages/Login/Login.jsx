@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import LoginForm from './LoginForm'
 import useToast from '../../hooks/useToast'
 import useFetch from '../../hooks/useFetch'
+import useCache from '../../hooks/useCache'
 const SERVER_URL = import.meta.env.VITE_SERVER_URL
 
 function Login() {
@@ -12,6 +13,12 @@ function Login() {
 
   const { data, loading, error, executeFetch } = useFetch()
   const { showToast, RenderToast } = useToast()
+  const { cacheDelete } = useCache()
+
+  useEffect(() => {
+    cacheDelete(`${SERVER_URL}/api/posts`)
+    cacheDelete(`${SERVER_URL}/api/users/me/posts`)
+  }, [cacheDelete])
 
   useEffect(() => {
     if (error) {
