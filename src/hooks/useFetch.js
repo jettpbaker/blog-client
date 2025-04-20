@@ -26,6 +26,7 @@ const useFetch = (initialUrl = null, initialOptions = {}) => {
         const timeSinceCache = now - cachedData.timestamp
 
         if (timeSinceCache < cacheTTL) {
+          console.log(cachedData)
           const responseData = cachedData.value
           setData(responseData)
           setLoading(false)
@@ -36,17 +37,6 @@ const useFetch = (initialUrl = null, initialOptions = {}) => {
 
       try {
         const response = await fetch(fetchUrl, fetchOptions)
-
-        // Check if the response is JSON
-        const contentType = response.headers.get('content-type')
-        if (!contentType || !contentType.includes('application/json')) {
-          // Handle non-JSON response
-          const text = await response.text()
-          setError('Received non-JSON response from server')
-          console.error('Non-JSON response:', text)
-          return null
-        }
-
         const responseData = await response.json()
 
         if (!response.ok) {
@@ -55,6 +45,7 @@ const useFetch = (initialUrl = null, initialOptions = {}) => {
         setData(responseData)
 
         if (fetchOptions.method === 'GET') {
+          if (fetchUrl.includes('admin')) return
           cacheSet(fetchUrl, responseData)
         }
 
