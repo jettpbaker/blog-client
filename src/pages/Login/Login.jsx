@@ -22,7 +22,6 @@ function Login() {
 
   useEffect(() => {
     if (error) {
-      console.error(error)
       showToast('error', error)
     }
   }, [error, showToast])

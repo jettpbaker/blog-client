@@ -26,7 +26,6 @@ const useFetch = (initialUrl = null, initialOptions = {}) => {
         const timeSinceCache = now - cachedData.timestamp
 
         if (timeSinceCache < cacheTTL) {
-          console.log(cachedData)
           const responseData = cachedData.value
           setData(responseData)
           setLoading(false)
