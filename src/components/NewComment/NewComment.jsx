@@ -3,11 +3,12 @@ import styles from './NewComment.module.css'
 import useFetch from '../../hooks/useFetch'
 import useToast from '../../hooks/useToast'
 import useCache from '../../hooks/useCache'
+import { Loading } from '../Loading/Loading'
 const SERVER_URL = import.meta.env.VITE_SERVER_URL
 
 export function NewComment({ postId, createGhostComment, firstName, lastName }) {
   const [comment, setComment] = useState('')
-  const { data, loading, error, executeFetch } = useFetch()
+  const { loading, executeFetch } = useFetch()
   const { showToast, RenderToast } = useToast()
   const { cacheDelete } = useCache()
   const cacheKey = `${SERVER_URL}/api/posts/${postId}`
@@ -36,9 +37,13 @@ export function NewComment({ postId, createGhostComment, firstName, lastName }) 
       body: JSON.stringify({ content: comment, postId }),
     }
 
-    executeFetch(url, options)
-    createGhostComment({ firstName, lastName }, comment)
-    cacheDelete(cacheKey)
+    try {
+      executeFetch(url, options)
+      createGhostComment({ firstName, lastName }, comment)
+      cacheDelete(cacheKey)
+    } catch (error) {
+      showToast('error', error)
+    }
   }
 
   return (
@@ -51,7 +56,7 @@ export function NewComment({ postId, createGhostComment, firstName, lastName }) 
           onChange={(e) => handleCommentChange(e)}
           required
         />
-        <button type="submit">Comment</button>
+        <button type="submit">{loading ? <Loading /> : 'Comment'}</button>
       </form>
       <RenderToast />
     </div>

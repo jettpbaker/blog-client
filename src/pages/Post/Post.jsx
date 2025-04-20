@@ -1,6 +1,7 @@
 import { useParams } from 'react-router'
 import styles from './Post.module.css'
 import useFetch from '../../hooks/useFetch'
+import useToast from '../../hooks/useToast'
 import { useEffect } from 'react'
 import { RenderPost } from './RenderPost'
 import { PostComments } from './PostComments'
@@ -12,6 +13,7 @@ function Post() {
   const { id } = useParams()
   const { data, loading, error, executeFetch } = useFetch()
   const [author, setAuthor] = useState('')
+  const { showToast, RenderToast } = useToast()
 
   useEffect(() => {
     const url = `${SERVER_URL}/api/posts/${id}`
@@ -31,6 +33,12 @@ function Post() {
     }
   }, [data])
 
+  useEffect(() => {
+    if (error) {
+      showToast('error', error)
+    }
+  }, [error, showToast])
+
   return (
     <main className={styles.postPageContainer}>
       <section className={styles.postAndCommentsContainer}>
@@ -43,6 +51,7 @@ function Post() {
         )}
         {loading && <Loading size="large" />}
       </section>
+      <RenderToast />
     </main>
   )
 }

@@ -37,7 +37,3 @@
 ## Check
 
 - [x] Make sure new loading component works
-
-## Notes
-
-- [ ] When creating proper README, mention that next step is swapping data-passing in
