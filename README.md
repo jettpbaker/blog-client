@@ -31,8 +31,8 @@
 - [x] Images expand post preview too much
 - [x] Deleting a post didn't delete the post
 - [x] Publish post not greyed out if you are not admin
+- [x] Logging in should clear basically all caches
 - [ ] Go around and add error toasts to components that don't have it
-- [ ] Logging in should clear basically all caches
 
 ## Check
 
