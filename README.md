@@ -32,6 +32,7 @@
 - [x] Deleting a post didn't delete the post
 - [x] Publish post not greyed out if you are not admin
 - [ ] Go around and add error toasts to components that don't have it
+- [ ] Logging in should clear basically all caches
 
 ## Check
 
