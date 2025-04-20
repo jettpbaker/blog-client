@@ -31,7 +31,7 @@
 - [x] Images expand post preview too much
 - [x] Deleting a post didn't delete the post
 - [x] Publish post not greyed out if you are not admin
-- [ ] Something funky with comments needed a toast popup
+- [ ] Go around and add error toasts to components that don't have it
 
 ## Check
 
