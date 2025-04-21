@@ -5,6 +5,7 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2.5rem;
+  height: 2.5rem; /* Fixed height */
 
   border-bottom: 1px solid var(--color-secondary-border);
 
@@ -83,6 +84,9 @@ a {
 
 .navBarList li {
   padding: 0.6rem 0.3rem;
+  height: 1.25rem; /* Fixed height for nav items */
+  display: flex;
+  align-items: center;
 }
 
 a,
@@ -131,17 +135,19 @@ a:hover,
 }
 
 .layoutFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 1rem 2.5rem;
+  height: 2.5rem; /* Fixed height */
   border-top: 1px solid var(--color-secondary-border);
   background-color: var(--color-primary-background);
 
   z-index: 2;
+}
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  min-height: 2.5rem;
+.footerContent {
+  min-width: 5rem; /* Reserve space for "My posts" link */
 }
 
 .githubLink {
