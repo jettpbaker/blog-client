@@ -35,7 +35,7 @@ This is the easiest way to get started, especially if you're not familiar with t
    ```
 4. Start the application:
    ```bash
-   docker-compose up
+   docker compose up
    ```
 5. Access the application at `http://localhost:5173`
 
