@@ -39,7 +39,7 @@ This is the easiest way to get started, especially if you're not familiar with t
    ```
 5. Access the application at `http://localhost:5173`
 
-### Option 2: Local Development (For JavaScript developers)
+### Option 2: Local Development
 
 If you prefer working directly with Node.js and want to make code changes:
 
