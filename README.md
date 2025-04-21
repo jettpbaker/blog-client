@@ -33,6 +33,7 @@
 - [x] Publish post not greyed out if you are not admin
 - [x] Logging in should clear basically all caches
 - [x] Go around and add error toasts to components that don't have it
+- [ ] Page shifting when logging in and out
 
 ## Check
 
