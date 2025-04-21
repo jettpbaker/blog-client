@@ -1,41 +1,71 @@
-# TODO
+# Blog Client
 
-## Clean Up
-
-- [x] Move logic from `PostPublishModal` into separate js file
-- [x] Move logic from `EditPost` into separate js file
+A React-based blog client for reading and interacting with blog content. This is the front end for a full-stack blog project, built with React, Vite, and React Router.
 
 ## Features
 
-- [x] Edit post page
-- [x] Timeout expired JWTs
-- [x] Add a general loading component?
-- [x] Add a loading state to editing posts
-- [ ] Delete comments
+- Markdown support for blog content
+- User authentication and commenting
+- Responsive design for mobile and desktop
+- Docker containerization for easy deployment
 
-## Fixes
+## Prerequisites
 
-- [x] Fix 'red aura' turning into 'red halo' when page scrolling
-- [x] Fix scrolling issue on 'Your Posts' page
-- [x] Fix being able to edit other people's posts
-- [x] Add loading component to 'Your Posts' page
-- [x] Fix offset edit icon in 'Your Posts' page
-- [x] Editing a post did not properly delete cache in prod
-- [x] Increase minimum width on specific post page
-- [x] Some pages are not properly mobile responsive
-- [x] When navigating from home to new post page the header (or footer?) changes size
-- [x] When posting a new post, loading component makes the button height super tall
-- [x] Something funky going on with passing data into a post when editing it
-- [x] Width scrollbar appearing when adding an image to a new post
-- [x] Small h1 elements when writing a new post
-- [x] Check quote blocks in new post
-- [x] Images expand post preview too much
-- [x] Deleting a post didn't delete the post
-- [x] Publish post not greyed out if you are not admin
-- [x] Logging in should clear basically all caches
-- [x] Go around and add error toasts to components that don't have it
-- [x] Page shifting when logging in and out
+You’ll need the [Blog API](https://github.com/jettpbaker/blog-api) running as the backend for this client to function.
 
-## Check
+## Deployment Options
 
-- [x] Make sure new loading component works
+You have two options to run this application:
+
+### Option 1: Docker
+
+This is the easiest way to get started, especially if you're not familiar with the JavaScript ecosystem.
+
+1. Make sure you have Docker and Docker Compose installed
+2. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd blog-client
+   ```
+3. Copy the environment file:
+   ```bash
+   cp .env.example .env
+   ```
+4. Start the application:
+   ```bash
+   docker-compose up
+   ```
+5. Access the application at `http://localhost:5173`
+
+### Option 2: Local Development (For JavaScript developers)
+
+If you prefer working directly with Node.js and want to make code changes:
+
+1. Install prerequisites:
+   - Node.js (latest LTS version)
+   - pnpm (version 10.7.0 or higher)
+2. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd blog-client
+   ```
+3. Install dependencies:
+   ```bash
+   pnpm install
+   ```
+4. Copy the environment file:
+   ```bash
+   cp .env.example .env
+   ```
+5. Start the development server:
+   ```bash
+   pnpm dev
+   ```
+6. Access the application at `http://localhost:5173`
+
+## Available Scripts
+
+- `pnpm dev` - Start the development server
+- `pnpm build` - Build the application for production
+- `pnpm preview` - Preview the production build
+- `pnpm lint` - Run ESLint to check code quality
