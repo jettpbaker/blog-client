@@ -2,6 +2,8 @@
 
 A React-based blog client for reading and interacting with blog content. This is the front end for a full-stack blog project, built with React, Vite, and React Router.
 
+This client is deployed [publicly](https://blog-client-production-7fd1.up.railway.app/).
+
 ## Features
 
 - Markdown support for blog content
