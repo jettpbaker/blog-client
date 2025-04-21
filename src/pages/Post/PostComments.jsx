@@ -1,10 +1,9 @@
 import styles from './Post.module.css'
 import { NewComment } from '../../components/NewComment/NewComment'
 import { RenderComments } from '../../components/RenderComments.jsx/RenderComments'
-import { useState } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import useFetch from '../../hooks/useFetch'
 import useToast from '../../hooks/useToast'
-import { useEffect } from 'react'
 import { Loading } from '../../components/Loading/Loading'
 const SERVER_URL = import.meta.env.VITE_SERVER_URL
 
@@ -13,20 +12,31 @@ export function PostComments({ postId, comments }) {
   const { data, loading, error, executeFetch } = useFetch()
   const [firstName, setFirstname] = useState('')
   const [lastName, setLastName] = useState('')
+  const [authorId, setAuthorId] = useState('')
   const { showToast, RenderToast } = useToast()
 
   const createGhostComment = (author, content) => {
     const createdAt = new Date()
-    const id = `TempGhostComment-${Date.now()}`
     const comment = {
-      author,
+      author: {
+        ...author,
+        id: authorId,
+      },
       content,
       createdAt,
-      id,
+      id: 'ghostComment',
     }
 
-    setCommentsState([comment, ...commentsState])
+    setCommentsState((prevComments) => [comment, ...prevComments])
   }
+
+  const replaceGhostComment = useCallback((newComment) => {
+    setCommentsState((prev) => prev.map((c) => (c.id === 'ghostComment' ? newComment : c)))
+  }, [])
+
+  const handleDeleteComment = useCallback((commentId) => {
+    setCommentsState((prev) => prev.filter((comment) => comment.id !== commentId))
+  }, [])
 
   // Get current user's first and last name in case they comment
   useEffect(() => {
@@ -45,9 +55,10 @@ export function PostComments({ postId, comments }) {
 
   useEffect(() => {
     if (data) {
-      const { firstName, lastName } = data
+      const { firstName, lastName, id: authorId } = data
       setFirstname(firstName)
       setLastName(lastName)
+      setAuthorId(authorId)
     }
   }, [data])
 
@@ -68,8 +79,9 @@ export function PostComments({ postId, comments }) {
             createGhostComment={createGhostComment}
             firstName={firstName}
             lastName={lastName}
+            replaceGhostComment={replaceGhostComment}
           />
-          <RenderComments comments={commentsState} />
+          <RenderComments comments={commentsState} postId={postId} onDeleteComment={handleDeleteComment} />
         </>
       )}
       <RenderToast />

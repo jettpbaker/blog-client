@@ -11,6 +11,7 @@
 - [x] Timeout expired JWTs
 - [x] Add a general loading component?
 - [x] Add a loading state to editing posts
+- [ ] Delete comments
 
 ## Fixes
 
