@@ -42,4 +42,4 @@
 
 ## Finish
 
-- [ ] basic "what to do" to run
+- [x] basic "what to do" to run
