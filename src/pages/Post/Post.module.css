@@ -10,7 +10,7 @@
 }
 
 .postAndCommentsContainer {
-  max-width: 70ch;
+  width: 70ch;
 }
 
 .postAndCommentsContainer svg {
@@ -107,6 +107,6 @@
   }
 
   .postAndCommentsContainer {
-    min-width: 100%;
+    width: 100%;
   }
 }

@@ -1,10 +1,10 @@
 import { Comment } from '../Comment.jsx/Comment'
 
-export function RenderComments({ comments }) {
+export function RenderComments({ comments, postId, onDeleteComment }) {
   return (
     <div>
       {comments.map((comment) => (
-        <Comment comment={comment} key={comment.id} />
+        <Comment key={comment.id} comment={comment} postId={postId} onDeleteComment={onDeleteComment} />
       ))}
     </div>
   )
